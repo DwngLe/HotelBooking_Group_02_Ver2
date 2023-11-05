@@ -32,9 +32,6 @@
     <string name="login_failed">"Login failed"</string>
 
 
-
-
-
     <string name="username">Username</string>
     <string name="password">password</string>
     <string name="login">Login</string>

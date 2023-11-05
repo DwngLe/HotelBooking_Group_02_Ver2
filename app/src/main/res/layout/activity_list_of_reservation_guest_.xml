@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    tools:context=".List_of_Reservations_Guest_Activity">
+    tools:context=".activities.List_of_Reservations_Guest_Activity">
 
     <LinearLayout
         android:layout_width="match_parent"

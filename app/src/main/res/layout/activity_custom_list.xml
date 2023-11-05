@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".custom_list">
+    tools:context=".activities.custom_list">
 
     <ListView
         android:id="@+id/cus_list"

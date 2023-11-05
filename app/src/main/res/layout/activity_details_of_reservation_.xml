@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Details_of_Reservation_Activity">
+    tools:context=".activities.Details_of_Reservation_Activity">
 
     <Button
         android:id="@+id/button_home"

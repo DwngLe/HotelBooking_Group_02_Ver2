@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#1AB65C</color>
+    <color name="colorPrimaryDark">#17974D</color>
     <color name="colorAccent">#03DAC5</color>
 
 <!--    <color name="colorPrimary">#6200EE</color>-->
 <!--    <color name="colorPrimaryDark" tools:ignore="DuplicateDefinition">#3700B3</color>-->
 <!--    <color name="colorAccent">#03DAC5</color>-->
     <color name="SteelBlue">#4682B4</color>
+    <color name="green">#1AB65C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_area">#F2F2F2</color>
+    <color name="gray_stroke">#C4C4C4</color>
 </resources>

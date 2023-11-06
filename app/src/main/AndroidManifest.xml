@@ -28,8 +28,10 @@
             android:parentActivityName=".activities.MainActivity"/>
         <activity android:name=".activities.viewProfile" />
         <activity android:name=".activities.managerProfile" />
-        <activity android:name=".activities.searchGusetManager" />
-        <activity android:name=".activities.adminViewGuestManager" />
+        <activity android:name=".activities.searchGusetManager"
+            android:parentActivityName=".activities.adminHomeScreen"/>
+        <activity android:name=".activities.adminViewGuestManager"
+            android:parentActivityName=".activities.searchGusetManager" />
         <activity android:name=".activities.adminProfile"
             android:parentActivityName=".activities.adminHomeScreen"/>
         <activity android:name=".activities.guestViewReservationSummary" />

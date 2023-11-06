@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,8 @@ import static android.content.Context.MODE_PRIVATE;
 import com.example.hotelbookingsystem.activities.Profile;
 import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.activities.adminViewGuestManager;
+
+import org.w3c.dom.Text;
 
 public class MyAdapter extends BaseAdapter {
 
@@ -50,10 +53,10 @@ public class MyAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.custom_layout,null);
-        EditText fn = (EditText)view.findViewById(R.id.admin_fmg);
-        EditText ln = (EditText)view.findViewById(R.id.admin_lmg);
-        EditText rl = (EditText)view.findViewById(R.id.admin_rmg);
-        final EditText un = (EditText)view.findViewById(R.id.admin_umg);
+        TextView fn = (TextView) view.findViewById(R.id.admin_fmg);
+        TextView ln = (TextView) view.findViewById(R.id.admin_lmg);
+        TextView rl = (TextView) view.findViewById(R.id.admin_rmg);
+        final TextView un = (TextView) view.findViewById(R.id.admin_umg);
         viewGM = (Button) view.findViewById(R.id.admin_viewGM);
 
         Profile profile = arrayList.get(i);

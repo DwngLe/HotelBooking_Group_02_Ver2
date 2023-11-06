@@ -380,7 +380,8 @@ public class DBManager extends SQLiteOpenHelper {
     {
         ArrayList<Profile> arrayList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String qry = "select * from system_user where lastName = '" + abc + "' ";
+        abc = "%"+abc+"%";
+        String qry = "select * from system_user where lastName LIKE '" + abc + "' ";
 
         Cursor cursor = db.rawQuery(qry, null);
         while(cursor.moveToNext())

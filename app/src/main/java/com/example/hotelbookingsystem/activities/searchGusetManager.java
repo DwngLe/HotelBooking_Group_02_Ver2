@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,41 +23,44 @@ public class searchGusetManager extends AppCompatActivity {
     ListView lv_customerList;
     ArrayList<Profile> arrayList;
     MyAdapter myAdapter;
+    TextView tvNumOfResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.search_guest_manager);
-
+        getSupportActionBar().setTitle("Search User");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         lastName = findViewById(R.id.admin_lastname);
         search = findViewById(R.id.admin_search);
         lv_customerList = findViewById(R.id.admin_list);
+        tvNumOfResult = findViewById(R.id.search_guest_manager_tv_numberOfResult);
+//        logout = findViewById(R.id.searchAdminLogout);
 
-        logout = findViewById(R.id.searchAdminLogout);
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(searchGusetManager.this,MainActivity.class));
-            }
-        });
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(searchGusetManager.this,MainActivity.class));
+//            }
+//        });
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-               // startActivity(new Intent(searchGusetManager.this,custom_list.class));
+
                 String abc = lastName.getText().toString();
-                //arrayList = new ArrayList<>();
                 DBManager dbManager = new DBManager(searchGusetManager.this);
                 arrayList = dbManager.getAllUsers(abc);
-
-                myAdapter = new MyAdapter(searchGusetManager.this,arrayList);
-                lv_customerList.setAdapter(myAdapter);
-                myAdapter.notifyDataSetChanged();
-
+                int number = arrayList.size();
+                if(number > 0) {
+                    myAdapter = new MyAdapter(searchGusetManager.this, arrayList);
+                    lv_customerList.setAdapter(myAdapter);
+                    myAdapter.notifyDataSetChanged();
+                }
+                tvNumOfResult.setText("Found " + number + " results");
 
 //                Cursor cursor = dbManager.getEveryone(abc);
 //

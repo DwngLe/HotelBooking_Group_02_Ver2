@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.RemoteViews;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -24,7 +25,7 @@ public class adminViewGuestManager extends AppCompatActivity {
 
     Button admin_modifyGM,admin_deleteGM,home,logout;
     EditText admin_userGM,admin_roleGM,admin_lastGM,admin_firstGM,admin_pwdGM,admin_staddrGM,admin_cityGM,admin_stateGM,admin_zipGM,admin_emailGM,admin_phone;
-    TextView admin_title;
+    TextView tvName;
 
 
 
@@ -32,7 +33,9 @@ public class adminViewGuestManager extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_view_guest_manager);
+        setContentView(R.layout.activity_admin_view_guest_manager);
+        getSupportActionBar().setTitle("User Profile");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         final String keyUserName = sharedpreferences.getString(MyAdapter.KEY_un,"");
@@ -48,28 +51,12 @@ public class adminViewGuestManager extends AppCompatActivity {
         admin_zipGM = findViewById(R.id.admin_zipGM);
         admin_emailGM = findViewById(R.id.admin_emailGM);
         admin_phone = findViewById(R.id.admin_phoneGM);
-        admin_title = findViewById(R.id.admin_viewTextGM);
-
-        admin_modifyGM = findViewById(R.id.admin_modifyGM);
-        admin_deleteGM = findViewById(R.id.admin_deleteGM);
-
-        home = findViewById(R.id.adminViewHome);
-        logout = findViewById(R.id.adminViewLogout);
+        tvName = findViewById(R.id.guest_manager_tv_profile_name);
+        admin_modifyGM = (Button) findViewById(R.id.admin_modifyGM);
+        admin_deleteGM = (Button) findViewById(R.id.admin_deleteGM);
 
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(adminViewGuestManager.this,adminHomeScreen.class));
-            }
-        });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(adminViewGuestManager.this, MainActivity.class));
-            }
-        });
 
 
         DBManager dbManager = new DBManager(adminViewGuestManager.this);
@@ -87,7 +74,7 @@ public class adminViewGuestManager extends AppCompatActivity {
         admin_emailGM.setText(profile.getEmail());
         admin_phone.setText(profile.getPhone());
         admin_roleGM.setText(profile.getRole());
-
+        tvName.setText(profile.getLastName());
 
         admin_userGM.setFocusable(false);
         admin_pwdGM.setFocusable(false);
@@ -106,7 +93,6 @@ public class adminViewGuestManager extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 admin_firstGM.setFocusableInTouchMode(true);
                 admin_lastGM.setFocusableInTouchMode(true);
                 admin_staddrGM.setFocusableInTouchMode(true);
@@ -116,8 +102,7 @@ public class adminViewGuestManager extends AppCompatActivity {
                 admin_emailGM.setFocusableInTouchMode(true);
                 admin_phone.setFocusableInTouchMode(true);
 
-                admin_title.setText("Modify Selected Guest/Manager Screen");
-
+                admin_modifyGM.setText("Confirm");
                 admin_deleteGM.setVisibility(View.GONE);
 
 

@@ -38,16 +38,16 @@ public class viewProfile extends AppCompatActivity {
         final String role = sharedpreferences.getString(MainActivity.KEY_ROLE,"");
 
         pro_name = findViewById(R.id.pro_name);
-        pro_user = findViewById(R.id.pro_user);
-        pro_pwd = findViewById(R.id.pro_pwd);
-        pro_first = findViewById(R.id.pro_first);
-        pro_last = findViewById(R.id.pro_last);
-        pro_staddr = findViewById(R.id.pro_staddr);
-        pro_city = findViewById(R.id.pro_city);
-        pro_state = findViewById(R.id.pro_state);
-        pro_zip = findViewById(R.id.pro_zip);
-        pro_email = findViewById(R.id.pro_email);
-        pro_phone = findViewById(R.id.pro_phone);
+        pro_user = findViewById(R.id.admin_userGM);
+        pro_pwd = findViewById(R.id.admin_pwdGM);
+        pro_first = findViewById(R.id.admin_firstGM);
+        pro_last = findViewById(R.id.admin_lastGM);
+        pro_staddr = findViewById(R.id.admin_staddrGM);
+        pro_city = findViewById(R.id.admin_cityGM);
+        pro_state = findViewById(R.id.admin_stateGM);
+        pro_zip = findViewById(R.id.admin_zipGM);
+        pro_email = findViewById(R.id.admin_emailGM);
+        pro_phone = findViewById(R.id.admin_phoneGM);
         pro_cname = findViewById(R.id.pro_cname);
         pro_ctype = findViewById(R.id.pro_ctype);
         pro_cnum = findViewById(R.id.pro_cnum);

@@ -27,7 +27,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_user"
+            android:id="@+id/admin_userGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -41,7 +41,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_pwd"
+            android:id="@+id/admin_pwdGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -55,7 +55,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_first"
+            android:id="@+id/admin_firstGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -69,7 +69,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_last"
+            android:id="@+id/admin_lastGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -83,7 +83,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_staddr"
+            android:id="@+id/admin_staddrGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -97,7 +97,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_city"
+            android:id="@+id/admin_cityGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -111,7 +111,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_state"
+            android:id="@+id/admin_stateGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -125,7 +125,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_zip"
+            android:id="@+id/admin_zipGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -139,7 +139,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_email"
+            android:id="@+id/admin_emailGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -153,7 +153,7 @@
             android:textColor="#000000"
             android:textSize="16dp"/>
         <EditText
-            android:id="@+id/pro_phone"
+            android:id="@+id/admin_phoneGM"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />

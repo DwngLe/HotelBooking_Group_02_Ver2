@@ -18,7 +18,9 @@ public class adminHomeScreen extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adminhomepage);
+        setContentView(R.layout.activity_admin_homepage);
+        getSupportActionBar().setTitle("Admin Profile");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         admin_view = findViewById(R.id.admin_view);
         admin_search = findViewById(R.id.admin_search);

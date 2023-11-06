@@ -24,12 +24,14 @@
             android:parentActivityName=".activities.MainActivity"/>
         <activity android:name=".activities.userHomeScreen" />
         <activity android:name=".activities.managerHomescreen" />
-        <activity android:name=".activities.adminHomeScreen" />
+        <activity android:name=".activities.adminHomeScreen"
+            android:parentActivityName=".activities.MainActivity"/>
         <activity android:name=".activities.viewProfile" />
         <activity android:name=".activities.managerProfile" />
         <activity android:name=".activities.searchGusetManager" />
         <activity android:name=".activities.adminViewGuestManager" />
-        <activity android:name=".activities.adminProfile" />
+        <activity android:name=".activities.adminProfile"
+            android:parentActivityName=".activities.adminHomeScreen"/>
         <activity android:name=".activities.guestViewReservationSummary" />
         <activity android:name=".activities.searchRoomScreen" />
         <activity android:name=".activities.roomListScreen" />

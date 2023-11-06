@@ -17,7 +17,7 @@ import com.example.hotelbookingsystem.R;
 public class adminProfile extends AppCompatActivity {
 
     Button home,logout;
-    EditText pro_user,pro_pwd,pro_first,pro_last,pro_staddr,pro_city,pro_state,pro_zip,pro_email,pro_phone,pro_cname,pro_cnum,pro_cexp,pro_role;
+    TextView pro_user,pro_pwd,pro_first,pro_last,pro_staddr,pro_city,pro_state,pro_zip,pro_email,pro_phone,pro_cname,pro_cnum,pro_cexp,pro_role;
     Spinner pro_ctype;
     TextView pro_name;
     SharedPreferences sharedpreferences;
@@ -27,12 +27,14 @@ public class adminProfile extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Admin Management");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         final String user = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
         final String role = sharedpreferences.getString(MainActivity.KEY_ROLE,"");
 
 
-        setContentView(R.layout.admin_profile);
+        setContentView(R.layout.activity_admin_profile);
 
 
 

@@ -15,11 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class searchRoomScreen extends AppCompatActivity {
 
@@ -68,39 +71,15 @@ public class searchRoomScreen extends AppCompatActivity {
         Date tomorrow = c.getTime();
 
 
-        SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String formattedDate = df.format(today);
         String tomDate = df.format(tomorrow);
 
         cidate.setText(formattedDate);
         codate.setText(tomDate);
 
-        final String[] arr = tomDate.split("/");
-        String tomYear = arr[2];
-        String tomDay = arr[1];
-        String tomMonth = arr[0];
-
-        final String[] arr1 = formattedDate.split("/");
-        String toYear = arr1[2];
-        String toDay = arr1[1];
-        String toMonth = arr1[0];
-        int numOfNights1 = 0;
-
-        if(Integer.parseInt(tomYear) >= Integer.parseInt(toYear))
-        {
-            if(Integer.parseInt(toMonth) == Integer.parseInt(tomMonth) )
-            {
-                numOfNights1 = (Integer.parseInt(tomDay)) - (Integer.parseInt(toDay));
-            }
-        }
 
 
-       // System.out.println(numOfNights1);
-
-
-
-
-        System.out.println("Hotel Room Type is " + Hroom.getSelectedItem().toString());
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,24 +92,25 @@ public class searchRoomScreen extends AppCompatActivity {
                 String[] arr1 = checkinDate.split("/");
                 String[] arr = checkOutDate.split("/");
 
+
+                //Date format = MM/dd/yyyy
                 String tomYear = arr[2];
-                String tomDay = arr[1];
-                String tomMonth = arr[0];
+                String tomDay = arr[0];
+                String tomMonth = arr[1];
 
                 String toYear = arr1[2];
-                String toDay = arr1[1];
-                String toMonth = arr1[0];
+                String toDay = arr1[0];
+                String toMonth = arr1[1];
                 int numOfNights = 0;
 
-                if(Integer.parseInt(tomYear) >= Integer.parseInt(toYear))
-                {
-                    if(Integer.parseInt(toMonth) == Integer.parseInt(tomMonth) )
-                    {
-                        numOfNights = (Integer.parseInt(tomDay)) - (Integer.parseInt(toDay));
-                    }
+
+                try {
+                    numOfNights = calculateDays(checkinDate, checkOutDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
-                System.out.println(numOfNights);
+                System.out.println("So luong dem thue la: " + numOfNights);
 
                 sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
 //
@@ -144,13 +124,6 @@ public class searchRoomScreen extends AppCompatActivity {
                 session.apply();
 
 
-//                String result = "";
-//                String arr[] = cidate.getText().toString().split("/");
-//                String year = arr[2];
-//                String day = arr[1];
-//                String month = arr[0];
-//
-//                Date dnow = new Date()
 
                 if(numOfNights < 1)
                 {
@@ -158,11 +131,7 @@ public class searchRoomScreen extends AppCompatActivity {
                 }
                 else
                 {
-
                     setContentView(R.layout.room_list);
-//
-//
-//
                     room_listView = findViewById(R.id.room_listView);
 
                     DBManager dbManager = new DBManager(searchRoomScreen.this);
@@ -196,5 +165,17 @@ public class searchRoomScreen extends AppCompatActivity {
                 startActivity(new Intent(searchRoomScreen.this,MainActivity.class));
             }
         });
+
+
+    }
+
+    public static int calculateDays(String checkin, String checkout) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date dateCheckin = format.parse(checkin);
+        Date dateCheckout = format.parse(checkout);
+
+        long difference = dateCheckout.getTime() - dateCheckin.getTime();
+        return (int)(difference / (1000 * 60 * 60 * 24));
     }
 }

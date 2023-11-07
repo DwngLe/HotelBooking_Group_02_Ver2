@@ -307,6 +307,11 @@ public class DBManager extends SQLiteOpenHelper {
         String qry = "select * from system_user where lastName LIKE '" + abc + "' ";
 
         Cursor cursor = db.rawQuery(qry, null);
+//        if(cursor.getCount() <=0){
+//            Profile profile = new Profile();
+//            arrayList.add(profile);
+//            return  arrayList;
+//        }
         while (cursor.moveToNext()) {
             String fname = cursor.getString(3);
             String uname = cursor.getString(1);
@@ -497,12 +502,6 @@ public class DBManager extends SQLiteOpenHelper {
 
         Room room1 = new Room();
 
-//        status = cursor.getString(cursor.getColumnIndex("roomStatus"));
-//
-//        System.out.println(status);
-//
-//        qry = "select * from rooms where hotelName = '" + name + "' ,roomType = '" + type + "' and roomStatus = '" + status + "' ";
-//        cursor = db.rawQuery(qry,null);
 
 
         cursor.moveToFirst();
@@ -518,14 +517,14 @@ public class DBManager extends SQLiteOpenHelper {
             room1 = new Room(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(7), cursor.getString(8), cursor.getString(6), cursor.getString(0), cursor.getString(9));
 
 
-            room1.setHotelName(cursor.getString(1));
-            room1.setHotelLocation(cursor.getString(2));
-            room1.setRoomType(cursor.getString(3));
-            room1.setNumberOfBeds(cursor.getString(7));
-            room1.setRoomFacilities(cursor.getString(8));
-            room1.setPricePerNight(cursor.getString(6));
-            room1.setRoomNumber(cursor.getString(0));
-            room1.setRoomStatus(cursor.getString(9));
+//            room1.setHotelName(cursor.getString(1));
+//            room1.setHotelLocation(cursor.getString(2));
+//            room1.setRoomType(cursor.getString(3));
+//            room1.setNumberOfBeds(cursor.getString(7));
+//            room1.setRoomFacilities(cursor.getString(8));
+//            room1.setPricePerNight(cursor.getString(6));
+//            room1.setRoomNumber(cursor.getString(0));
+//            room1.setRoomStatus(cursor.getString(9));
 
             room.add(room1);
 
@@ -533,8 +532,7 @@ public class DBManager extends SQLiteOpenHelper {
         } while (cursor.moveToNext());
 
 
-//        data = cursor.getString(cursor.getColumnIndex("Role"));
-//        room = new ArrayList<Room>();
+
 
 
         return room;

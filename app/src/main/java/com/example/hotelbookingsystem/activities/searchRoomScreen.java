@@ -140,12 +140,7 @@ public class searchRoomScreen extends AppCompatActivity {
                     searchRoomAdapter = new searchRoomAdapter(searchRoomScreen.this,arrayList);
                     room_listView.setAdapter(searchRoomAdapter);
                     searchRoomAdapter.notifyDataSetChanged();
-
                 }
-
-
-
-
             }
         });
 

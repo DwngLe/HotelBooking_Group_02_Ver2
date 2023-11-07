@@ -35,7 +35,6 @@ public class searchRoomAdapter extends BaseAdapter {
     }
 
 
-
     @Override
     public long getItemId(int i) {
         return i;
@@ -49,16 +48,17 @@ public class searchRoomAdapter extends BaseAdapter {
     @SuppressLint("ViewHolder")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.room_list_adapter,null);
-        final EditText rlHname = (EditText)view.findViewById(R.id.rlHname);
-        EditText rlHloc = (EditText)view.findViewById(R.id.rlHloc);
-        final EditText rlRtype = (EditText)view.findViewById(R.id.rlRtype);
-        EditText rlNnights = (EditText)view.findViewById(R.id.rlNnights);
-        EditText rlPprice = (EditText)view.findViewById(R.id.rlPprice);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.room_list_adapter, null);
+
+
+        final EditText rlHname = (EditText) view.findViewById(R.id.rlHname);
+        EditText rlHloc = (EditText) view.findViewById(R.id.rlHloc);
+        final EditText rlRtype = (EditText) view.findViewById(R.id.rlRtype);
+        EditText rlNnights = (EditText) view.findViewById(R.id.rlNnights);
+        EditText rlPprice = (EditText) view.findViewById(R.id.rlPprice);
 //        final EditText un = (EditText)view.findViewById(R.id.admin_umg);
         viewRoom = (Button) view.findViewById(R.id.rlView);
-
 
 
         Hotel hotel = arrayList.get(i);
@@ -73,23 +73,21 @@ public class searchRoomAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
-                sharedpreferences = context.getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
+                sharedpreferences = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 //
                 SharedPreferences.Editor session = sharedpreferences.edit();
                 session.putString(KEY_hn, rlHname.getText().toString());
-                session.putString(KEY_rt,rlRtype.getText().toString());
+                session.putString(KEY_rt, rlRtype.getText().toString());
                 session.apply();
 
 
-
-                Intent intent = new Intent(view.getContext(),viewRoomScreen.class);
+                Intent intent = new Intent(view.getContext(), viewRoomScreen.class);
                 view.getContext().startActivity(intent);
             }
         });
 
         return view;
     }
-
 
 
     @Override

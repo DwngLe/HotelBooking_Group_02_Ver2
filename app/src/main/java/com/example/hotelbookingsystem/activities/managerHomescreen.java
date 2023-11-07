@@ -15,8 +15,6 @@ public class managerHomescreen extends AppCompatActivity {
     Button manager_profile, manager_viewList, manager_availableRooms, manager_searchRoom, logout;
 
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,37 +29,37 @@ public class managerHomescreen extends AppCompatActivity {
         manager_viewList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerHomescreen.this,reservation_summary_manager_Activity.class));
+                startActivity(new Intent(managerHomescreen.this, reservation_summary_manager_Activity.class));
             }
         });
 
-      manager_profile.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              startActivity(new Intent(managerHomescreen.this,managerProfile.class));
-          }
-      });
+        manager_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(managerHomescreen.this, managerProfile.class));
+            }
+        });
 
-      manager_availableRooms.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Intent intent = new Intent(managerHomescreen.this, Available_rooms.class);
-              startActivity(intent);
-          }
-      });
+        manager_availableRooms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(managerHomescreen.this, Available_rooms.class);
+                startActivity(intent);
+            }
+        });
 
-      manager_searchRoom.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Intent intent = new Intent(managerHomescreen.this, Searchroom.class);
-              startActivity(intent);
-          }
-      });
+        manager_searchRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(managerHomescreen.this, Searchroom.class);
+                startActivity(intent);
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerHomescreen.this,MainActivity.class));
+                startActivity(new Intent(managerHomescreen.this, MainActivity.class));
             }
         });
     }

@@ -40,7 +40,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+<!--asdasd-->
     <EditText
         android:id="@+id/rlHloc"
         android:layout_width="wrap_content"

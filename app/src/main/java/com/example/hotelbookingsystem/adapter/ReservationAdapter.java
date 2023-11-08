@@ -13,7 +13,7 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 import com.example.hotelbookingsystem.R;
-import com.example.hotelbookingsystem.activities.Reservation;
+import com.example.hotelbookingsystem.model.Reservation;
 
 public class ReservationAdapter extends BaseAdapter {
     public static final String SHARED_PREF_NAME = "mypref";

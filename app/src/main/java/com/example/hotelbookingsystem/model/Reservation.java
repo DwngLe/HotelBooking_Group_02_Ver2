@@ -1,4 +1,4 @@
-package com.example.hotelbookingsystem.activities;
+package com.example.hotelbookingsystem.model;
 
 public class Reservation {
 

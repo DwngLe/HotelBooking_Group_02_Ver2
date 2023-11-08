@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.model.Hotel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,8 +22,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class searchRoomScreen extends AppCompatActivity {
 

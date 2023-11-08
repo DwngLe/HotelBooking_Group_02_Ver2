@@ -8,6 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.hotelbookingsystem.model.Hotel;
+import com.example.hotelbookingsystem.model.Profile;
+import com.example.hotelbookingsystem.model.Registration;
+import com.example.hotelbookingsystem.model.Reservation;
+import com.example.hotelbookingsystem.model.Room;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

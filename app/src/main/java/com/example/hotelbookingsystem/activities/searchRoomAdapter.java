@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -60,13 +61,21 @@ public class searchRoomAdapter extends BaseAdapter {
 //        final EditText un = (EditText)view.findViewById(R.id.admin_umg);
         viewRoom = (Button) view.findViewById(R.id.rlView);
 
-
         Hotel hotel = arrayList.get(i);
+        String price = hotel.getPricePerNight().toString() + " đ";
+        String location = hotel.getHotelLocation().toString();
+        if (location.equals("HaNoi")) {
+            location = "Hà Nội";
+        } else if (location.equals("NgheAn")) {
+            location = "Nghệ An";
+        } else {
+            location = "Sài Gòn";
+        }
         rlHname.setText(hotel.getHotelName());
-        rlHloc.setText(hotel.getHotelLocation());
+        rlHloc.setText(location);
         rlRtype.setText(hotel.getRoomType());
         rlNnights.setText(hotel.getNumberOfRooms());
-        rlPprice.setText(hotel.getPricePerNight());
+        rlPprice.setText(price);
 
 
         viewRoom.setOnClickListener(new View.OnClickListener() {

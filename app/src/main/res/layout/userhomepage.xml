@@ -4,90 +4,170 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F8F8F8">
 
-    <Button
-        android:id="@+id/user_viewprofile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="111dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="29dp"
-        android:paddingHorizontal="@android:dimen/app_icon_size"
-        android:text="View Profile"
-        app:layout_constraintBottom_toTopOf="@+id/user_searchroom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/user_searchroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="111dp"
-        android:layout_marginEnd="106dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="596dp"
         android:paddingHorizontal="@android:dimen/app_icon_size"
         android:text="Search Room"
-        app:layout_constraintBottom_toTopOf="@+id/user_pending"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/user_pending"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="41dp"
-        android:paddingHorizontal="@android:dimen/app_icon_size"
-        android:text="View Pending Reservations"
-        app:layout_constraintBottom_toTopOf="@+id/user_reservationSummary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/user_reservationSummary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="135dp"
-        android:paddingHorizontal="@android:dimen/app_icon_size"
-        android:text="View Reservation Summary"
-        android:textColorHighlight="#FB3434"
-        android:textColorLink="#751D1D"
-        android:textFontWeight="@android:integer/config_longAnimTime"
-        android:textIsSelectable="false"
-        app:layout_constraintBottom_toTopOf="@+id/manager_logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/manager_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="104dp"
-        android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/user_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="106dp"
-        android:layout_marginBottom="75dp"
-        android:text="Guest Homepage"
-        android:textAllCaps="true"
-        android:textColor="#2196F3"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/user_viewprofile"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:layout_width="353dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bgr_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView41">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="20dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/ic_action_search" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="279dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Search" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="411dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgbtnHome"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:background="#00FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_action_home" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="45dp"
+            android:text="Home"
+            android:textColor="@color/green"
+            android:textSize="13dp" />
+
+        <ImageButton
+            android:id="@+id/imageList"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="10dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/ic_action_list" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="134dp"
+            android:layout_marginTop="45dp"
+            android:text="Booking"
+            android:textColor="@color/green"
+            android:textSize="13dp" />
+
+        <ImageButton
+            android:id="@+id/imageHistory"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="10dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/ic_action_history" />
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="227dp"
+            android:layout_marginTop="45dp"
+            android:text="History"
+            android:textColor="@color/green"
+            android:textSize="13dp" />
+
+        <ImageButton
+            android:id="@+id/imgbtnProfile"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="320dp"
+            android:layout_marginTop="10dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/ic_action_person" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="319dp"
+            android:layout_marginTop="45dp"
+            android:text="Profile"
+            android:textColor="@color/green"
+            android:textSize="13dp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="40dp"
+        android:text="Hello !!!"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:background="@drawable/bgr_sroll_user"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.model.Profile;
 
 public class managerProfile extends AppCompatActivity {
 

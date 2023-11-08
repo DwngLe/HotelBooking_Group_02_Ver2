@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.model.Hotel;
 
 public class searchRoomAdapter extends BaseAdapter {
 

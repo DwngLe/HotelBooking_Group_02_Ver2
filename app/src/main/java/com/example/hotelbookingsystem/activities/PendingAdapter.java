@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.model.Reservation;
 
 import java.util.ArrayList;
 

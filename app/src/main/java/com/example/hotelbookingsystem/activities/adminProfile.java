@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.model.Profile;
 
 public class adminProfile extends AppCompatActivity {
 

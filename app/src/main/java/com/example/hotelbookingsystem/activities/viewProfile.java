@@ -15,6 +15,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.model.Profile;
+import com.example.hotelbookingsystem.model.Reservation;
 
 public class viewProfile extends AppCompatActivity {
     Button home,logout;

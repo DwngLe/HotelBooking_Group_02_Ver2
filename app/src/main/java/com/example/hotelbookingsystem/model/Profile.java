@@ -2,7 +2,11 @@ package com.example.hotelbookingsystem.model;
 
 import android.content.SharedPreferences;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.w3c.dom.ls.LSOutput;
+
+import java.lang.String;
 
 public class Profile {
 
@@ -55,7 +59,7 @@ public class Profile {
         this.firstName = firstName;
     }
 
-    public Profile(String username, String password, String creditCardName, String creditCardNumber, String creditCardExp, String streetAddress, String city, String state, String zipCode, String email, String phone, String creditCardType) {
+    public Profile(String username, String password, String creditCardName, String creditCardNumber,String creditCardExp, String streetAddress, String city, String state, String zipCode, String email, String phone, String creditCardType) {
         this.username = username;
         this.password = password;
         this.creditCardName = creditCardName;
@@ -71,7 +75,7 @@ public class Profile {
     }
 
     //For Admin
-    public Profile(String username, String password, String role, String lastName, String firstName, String creditCardName, String creditCardNumber, String creditCardExp, String streetAddress, String city, String state, String zipCode, String email, String phone, String creditCardType) {
+    public Profile(String username, String password, String role, String lastName, String firstName, String creditCardName, String creditCardNumber,String creditCardExp, String streetAddress, String city, String state, String zipCode, String email, String phone, String creditCardType) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -120,6 +124,8 @@ public class Profile {
         this.email = email;
         this.phone = phone;
     }
+
+
 
     
 
@@ -185,7 +191,7 @@ public class Profile {
         return creditCardExp;
     }
 
-    public void setCreditCardExp(String creditCardExp) {
+    public void setCreditCardExpString (String creditCardExp) {
         this.creditCardExp = creditCardExp;
     }
 
@@ -243,6 +249,27 @@ public class Profile {
 
     public void setCreditCardType(String creditCardType) {
         this.creditCardType = creditCardType;
+    }
+
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", creditCardName='" + creditCardName + '\'' +
+                ", creditCardNumber='" + creditCardNumber + '\'' +
+                ", creditCardExp='" + creditCardExp + '\'' +
+                ", streetAddress='" + streetAddress + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", creditCardType='" + creditCardType + '\'' +
+                '}';
     }
 }
 

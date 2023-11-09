@@ -18,6 +18,10 @@ import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Reservation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class viewProfile extends AppCompatActivity {
 //    ScrollView sc = (ScrollView) findViewById(R.id.profile_scroll);
 
@@ -107,9 +111,7 @@ public class viewProfile extends AppCompatActivity {
                     modify.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            //Have to save those details in DataBase
 
-                            DBManager dbManager = new DBManager(viewProfile.this);
                             Profile profile = new Profile(pro_user.getText().toString(),pro_pwd.getText().toString(),pro_last.getText().toString(),pro_first.getText().toString(),
                                     pro_cname.getText().toString(),pro_cnum.getText().toString(),pro_cexp.getText().toString(),pro_staddr.getText().toString(),pro_city.getText().toString(),
                                     pro_state.getText().toString(),pro_zip.getText().toString(),pro_email.getText().toString(),pro_phone.getText().toString(),pro_ctype.getSelectedItem().toString());
@@ -214,7 +216,7 @@ public class viewProfile extends AppCompatActivity {
         pro_phone.setText(profile.getPhone());
         pro_cname.setText(profile.getCreditCardName());
         pro_cnum.setText(profile.getCreditCardNumber());
-        pro_cexp.setText(profile.getCreditCardExp());
+        pro_cexp.setText(profile.getCreditCardExp().toString());
 
 
 

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ public class adminProfile extends AppCompatActivity {
     TextView pro_name, tvName;
     SharedPreferences sharedpreferences;
 
+    ImageButton ibSearch, ibHome, ibProfile;
+
     public static final String SHARED_PREF_NAME = "mypref";
 
     @Override
@@ -43,21 +46,48 @@ public class adminProfile extends AppCompatActivity {
         final String username = sharedpreferences.getString(MainActivity.KEY_USERNAME, "");
         System.out.println("username: " + username);
         final String role = sharedpreferences.getString(MainActivity.KEY_ROLE, "");
-
-
         setContentView(R.layout.activity_admin_profile);
 
-        detailId();
+        pro_name = findViewById(R.id.admin_profile_name);
+        pro_user = findViewById(R.id.admin_userGM);
+        pro_pwd = findViewById(R.id.admin_pwdGM);
+        pro_first = findViewById(R.id.admin_firstGM);
+        pro_last = findViewById(R.id.admin_lastGM);
+        pro_staddr = findViewById(R.id.admin_staddrGM);
+        pro_city = findViewById(R.id.admin_cityGM);
+        pro_state = findViewById(R.id.admin_stateGM);
+        pro_zip = findViewById(R.id.admin_zipGM);
+        pro_email = findViewById(R.id.admin_emailGM);
+        pro_phone = findViewById(R.id.admin_phoneGM);
+        tvName = findViewById(R.id.admin_profile_name);
+        logout = findViewById(R.id.adminLogout);
+        ibProfile = findViewById(R.id.adProfile_profile);
+        ibHome = findViewById(R.id.adProfile_home);
+        ibSearch = findViewById(R.id.adProfile_search);
 
-        getAdminProfile(username);
+        ibSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(adminProfile.this, searchGusetManager.class));
+            }
+        });
 
-
-        home.setOnClickListener(new View.OnClickListener() {
+        ibHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(adminProfile.this, adminHomeScreen.class));
             }
         });
+
+        ibProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(adminProfile.this, adminProfile.class));
+            }
+        });
+
+        getAdminProfile(username);
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,25 +111,13 @@ public class adminProfile extends AppCompatActivity {
         pro_email.setText(profile.getEmail());
         pro_phone.setText(profile.getPhone());
         tvName.setText(profile.getLastName());
+        pro_name.setText(profile.getFirstName() + " " + profile.getLastName());
 
 
     }
 
     public void detailId() {
-        pro_name = findViewById(R.id.pro_name);
-        pro_user = findViewById(R.id.admin_userGM);
-        pro_pwd = findViewById(R.id.admin_pwdGM);
-        pro_first = findViewById(R.id.admin_firstGM);
-        pro_last = findViewById(R.id.admin_lastGM);
-        pro_staddr = findViewById(R.id.admin_staddrGM);
-        pro_city = findViewById(R.id.admin_cityGM);
-        pro_state = findViewById(R.id.admin_stateGM);
-        pro_zip = findViewById(R.id.admin_zipGM);
-        pro_email = findViewById(R.id.admin_emailGM);
-        pro_phone = findViewById(R.id.admin_phoneGM);
-        tvName = findViewById(R.id.admin_profile_name);
-        home = findViewById(R.id.adminHome);
-        logout = findViewById(R.id.adminLogout);
+
 
     }
 
@@ -108,7 +126,7 @@ public class adminProfile extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 System.out.println("Chay vao on respon o adminProfile");
-                 UserResponse adminProfile = response.body();
+                UserResponse adminProfile = response.body();
 
                 if (adminProfile != null) {
                     System.out.println(adminProfile.getUserList().get(0).toString());
@@ -121,6 +139,7 @@ public class adminProfile extends AppCompatActivity {
                 }
 
             }
+
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
 

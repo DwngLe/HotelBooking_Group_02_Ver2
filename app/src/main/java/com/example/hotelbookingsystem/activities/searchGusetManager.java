@@ -1,9 +1,11 @@
 package com.example.hotelbookingsystem.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +35,8 @@ public class searchGusetManager extends AppCompatActivity {
     MyAdapter myAdapter;
     TextView tvNumOfResult;
 
+    ImageButton ibHome, ibSearch, ibProfile;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,9 @@ public class searchGusetManager extends AppCompatActivity {
         search = findViewById(R.id.admin_search);
         lv_customerList = findViewById(R.id.admin_list);
         tvNumOfResult = findViewById(R.id.search_guest_manager_tv_numberOfResult);
+        ibHome = findViewById(R.id.searchUser_home);
+        ibSearch = findViewById(R.id.searchUser_find);
+        ibProfile = findViewById(R.id.searchUser_adProfile);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +60,30 @@ public class searchGusetManager extends AppCompatActivity {
                 getAllUserByLastName(userLastName);
             }
         });
+
+        ibHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(searchGusetManager.this, adminHomeScreen.class));
+            }
+        });
+
+        ibSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(searchGusetManager.this, adminHomeScreen.class));
+            }
+        });
+
+        ibProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(searchGusetManager.this, adminProfile.class));
+            }
+        });
     }
+
+
 
     private void getAllUserByLastName(String lastName) {
         ApiService.apiService.getUserByLastName(lastName).enqueue(new Callback<UserResponse>() {

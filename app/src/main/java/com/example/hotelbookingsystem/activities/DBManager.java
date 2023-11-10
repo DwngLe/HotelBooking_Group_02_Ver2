@@ -10,7 +10,6 @@ import android.util.Log;
 
 import com.example.hotelbookingsystem.model.Hotel;
 import com.example.hotelbookingsystem.model.Profile;
-import com.example.hotelbookingsystem.model.Registration;
 import com.example.hotelbookingsystem.model.Reservation;
 import com.example.hotelbookingsystem.model.Room;
 
@@ -150,38 +149,38 @@ public class DBManager extends SQLiteOpenHelper {
             return true;
         }
     }
-
-    public String addRecord(Registration registration) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-
-        cv.put(Username, registration.getUsername());
-        cv.put(Password, registration.getPassword());
-        cv.put(FirstName, registration.getFirstName());
-        cv.put(LastName, registration.getLastName());
-        cv.put(StreetAddress, registration.getStreetAddress());
-        cv.put(City, registration.getCity());
-        cv.put(State, registration.getState());
-        cv.put(Zipcode, registration.getZipCode());
-        cv.put(Email, registration.getEmail());
-        cv.put(Phone, registration.getPhone());
-        cv.put(NameOnCard, registration.getCreditCardName());
-        cv.put(Cctype, registration.getCreditCardType());
-        cv.put(Ccnumber, registration.getCreditCardNumber());
-        cv.put(Ccexpiry, registration.getCreditCardExp());
-
-
-        long insert = db.insert(System_users, null, cv);
-
-        if (insert == -1)
-
-            return "failed";
-        else
-            return "Account Created Successfully";
-
-
-    }
+//
+//    public String addRecord(Registration registration) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//
+//
+//        cv.put(Username, registration.getUsername());
+//        cv.put(Password, registration.getPassword());
+//        cv.put(FirstName, registration.getFirstName());
+//        cv.put(LastName, registration.getLastName());
+//        cv.put(StreetAddress, registration.getStreetAddress());
+//        cv.put(City, registration.getCity());
+//        cv.put(State, registration.getState());
+//        cv.put(Zipcode, registration.getZipCode());
+//        cv.put(Email, registration.getEmail());
+//        cv.put(Phone, registration.getPhone());
+//        cv.put(NameOnCard, registration.getCreditCardName());
+//        cv.put(Cctype, registration.getCreditCardType());
+//        cv.put(Ccnumber, registration.getCreditCardNumber());
+//        cv.put(Ccexpiry, registration.getCreditCardExp());
+//
+//
+//        long insert = db.insert(System_users, null, cv);
+//
+//        if (insert == -1)
+//
+//            return "failed";
+//        else
+//            return "Account Created Successfully";
+//
+//
+//    }
 
     public Profile viewProfileDetails(String un, String role) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -212,7 +211,7 @@ public class DBManager extends SQLiteOpenHelper {
         profile.setCreditCardName(cursor.getString(11));
         profile.setCreditCardType(cursor.getString(12));
         profile.setCreditCardNumber(cursor.getString(13));
-        profile.setCreditCardExp(cursor.getString(14));
+//        profile.setCreditCardExp(cursor.getString(14));
 
 
         return profile;

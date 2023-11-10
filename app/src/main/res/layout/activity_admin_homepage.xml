@@ -209,63 +209,104 @@
             </TableLayout>
 
 
-            <TextView
-                android:id="@+id/textView60"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/green"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="15dp"
-                android:text="View profile" />
+<!--            <Button-->
+<!--                android:id="@+id/admin_view"-->
+<!--                android:layout_marginStart="40dp"-->
+<!--                android:layout_marginEnd="40dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                style="@android:style/Widget.Button"-->
+<!--                android:background="@drawable/background_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="18dp"-->
+<!--                android:text="Your Profile" />-->
 
-            <Button
-                android:id="@+id/admin_view"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="10dp"
-                style="@android:style/Widget.Button"
-                android:background="@drawable/background_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:text="Your Profile" />
-
-            <Button
-                android:id="@+id/admin_search"
-                android:textSize="18dp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="16dp"
-                style="@android:style/Widget.Button"
-                android:background="@drawable/background_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Guest/Manager" />
+<!--            <Button-->
+<!--                android:id="@+id/admin_search"-->
+<!--                android:textSize="18dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginStart="40dp"-->
+<!--                android:layout_marginEnd="40dp"-->
+<!--                android:layout_marginBottom="16dp"-->
+<!--                style="@android:style/Widget.Button"-->
+<!--                android:background="@drawable/background_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Guest/Manager" />-->
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/admin_logout"
-        style="@android:style/Widget.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/back_ground_logout"
-        android:text="Log out"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:textStyle="bold"
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="411dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/admin_viewHome"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:background="#00FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_action_home" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="45dp"
+            android:text="Home"
+            android:textColor="@color/green"
+            android:textSize="13dp" />
+
+        <ImageButton
+            android:id="@+id/admin_search"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="184dp"
+            android:layout_marginTop="10dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/ic_action_search" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:layout_marginTop="45dp"
+            android:text="Find User"
+            android:textColor="@color/green"
+            android:textSize="13dp" />
+
+
+        <ImageButton
+            android:id="@+id/admin_view"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="320dp"
+            android:layout_marginTop="10dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/ic_action_person" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="319dp"
+            android:layout_marginTop="45dp"
+            android:text="Profile"
+            android:textColor="@color/green"
+            android:textSize="13dp" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

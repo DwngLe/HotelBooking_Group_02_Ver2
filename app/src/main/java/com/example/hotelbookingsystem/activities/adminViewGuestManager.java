@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -15,19 +16,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.adapter.MyAdapter;
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.api.ApiService;
 import com.example.hotelbookingsystem.model.Profile;
+import com.example.hotelbookingsystem.model.UserResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class adminViewGuestManager extends AppCompatActivity {
 
     SharedPreferences sharedpreferences;
 
     public static final String SHARED_PREF_NAME = "mypref";
+    public static final String KEY_id = "id";
+    Long id;
 
-    Button admin_modifyGM,admin_deleteGM,home,logout;
-    EditText admin_userGM,admin_roleGM,admin_lastGM,admin_firstGM,admin_pwdGM,admin_staddrGM,admin_cityGM,admin_stateGM,admin_zipGM,admin_emailGM,admin_phone;
+    Button admin_modifyGM, admin_deleteGM, home, logout;
+    EditText admin_userGM, admin_roleGM, admin_lastGM, admin_firstGM, admin_pwdGM, admin_staddrGM, admin_cityGM, admin_stateGM, admin_zipGM, admin_emailGM, admin_phone;
     TextView tvName;
-
-
 
 
     @Override
@@ -37,8 +44,8 @@ public class adminViewGuestManager extends AppCompatActivity {
         getSupportActionBar().setTitle("User Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String keyUserName = sharedpreferences.getString(MyAdapter.KEY_un,"");
+        sharedpreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        final String keyUserName = sharedpreferences.getString(MyAdapter.KEY_un, "");
 
         admin_userGM = findViewById(R.id.admin_userGM);
         admin_roleGM = findViewById(R.id.admin_roleGM);
@@ -54,15 +61,146 @@ public class adminViewGuestManager extends AppCompatActivity {
         tvName = findViewById(R.id.guest_manager_tv_profile_name);
         admin_modifyGM = (Button) findViewById(R.id.admin_modifyGM);
         admin_deleteGM = (Button) findViewById(R.id.admin_deleteGM);
+        id = sharedpreferences.getLong(MyAdapter.KEY_id, 1);
+
+        getUser(keyUserName);
 
 
+        admin_modifyGM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                admin_firstGM.setFocusableInTouchMode(true);
+                admin_lastGM.setFocusableInTouchMode(true);
+                admin_staddrGM.setFocusableInTouchMode(true);
+                admin_stateGM.setFocusableInTouchMode(true);
+                admin_cityGM.setFocusableInTouchMode(true);
+                admin_zipGM.setFocusableInTouchMode(true);
+                admin_emailGM.setFocusableInTouchMode(true);
+                admin_phone.setFocusableInTouchMode(true);
+
+                admin_modifyGM.setText("Confirm");
+                admin_deleteGM.setVisibility(View.GONE);
 
 
+                admin_modifyGM.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //Have to save those details in DataBase
+                        admin_deleteGM.setVisibility(View.VISIBLE);
 
-        DBManager dbManager = new DBManager(adminViewGuestManager.this);
-        Profile profile = dbManager.adminViewUser(keyUserName);
+                        Profile profile = new Profile(
+                                id,
+                                admin_userGM.getText().toString(),
+                                admin_pwdGM.getText().toString(),
+                                admin_roleGM.getText().toString(),
+                                admin_lastGM.getText().toString(),
+                                admin_firstGM.getText().toString(),
+                                admin_staddrGM.getText().toString(),
+                                admin_cityGM.getText().toString(),
+                                admin_stateGM.getText().toString(),
+                                admin_zipGM.getText().toString(),
+                                admin_emailGM.getText().toString(),
+                                admin_phone.getText().toString());
+                        updateUser(profile);
+                    }
+                });
+            }
+        });
 
+        admin_deleteGM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(adminViewGuestManager.this);
+                builder.setTitle("Confirm");
+                builder.setMessage("Are you sure?");
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        ApiService.apiService.deleteUser(id).enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.isSuccessful()) {
+                                    startActivity(new Intent(adminViewGuestManager.this, searchGusetManager.class));
+                                }else{
+                                    dialog.dismiss();
+                                }
+                            }
 
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Toast.makeText(adminViewGuestManager.this, "Something is error", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+    }
+
+    private void getUser(String username) {
+        ApiService.apiService.getProfile(username).enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                UserResponse userResponse = response.body();
+                if (userResponse != null) {
+                    Profile profile = userResponse.getUserList().get(0);
+                    refresh(profile);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(adminViewGuestManager.this, "Something is error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void updateUser(Profile profile) {
+        ApiService.apiService.updateUser(profile).enqueue(new Callback<Profile>() {
+            @Override
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                Profile profile = response.body();
+                if (profile != null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(adminViewGuestManager.this);
+                    builder.setTitle("Confirm");
+                    builder.setMessage("Are you sure?");
+                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Do nothing but close the dialog
+                            if (profile != null) {
+                                startActivity(new Intent(adminViewGuestManager.this, adminViewGuestManager.class));
+                            }
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Profile> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void refresh(Profile profile) {
         admin_userGM.setText(profile.getUsername());
         admin_pwdGM.setText(profile.getPassword());
         admin_firstGM.setText(profile.getFirstName());
@@ -87,128 +225,6 @@ public class adminViewGuestManager extends AppCompatActivity {
         admin_emailGM.setFocusable(false);
         admin_phone.setFocusable(false);
         admin_roleGM.setFocusable(false);
-
-
-        admin_modifyGM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                admin_firstGM.setFocusableInTouchMode(true);
-                admin_lastGM.setFocusableInTouchMode(true);
-                admin_staddrGM.setFocusableInTouchMode(true);
-                admin_stateGM.setFocusableInTouchMode(true);
-                admin_cityGM.setFocusableInTouchMode(true);
-                admin_zipGM.setFocusableInTouchMode(true);
-                admin_emailGM.setFocusableInTouchMode(true);
-                admin_phone.setFocusableInTouchMode(true);
-
-                admin_modifyGM.setText("Confirm");
-                admin_deleteGM.setVisibility(View.GONE);
-
-
-                admin_modifyGM.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //Have to save those details in DataBase
-
-                        admin_deleteGM.setVisibility(View.VISIBLE);
-
-
-
-                        DBManager dbManager = new DBManager(adminViewGuestManager.this);
-                        Profile profile = new Profile(admin_userGM.getText().toString(),admin_pwdGM.getText().toString(),admin_roleGM.getText().toString(),
-                                admin_lastGM.getText().toString(),admin_firstGM.getText().toString(),admin_staddrGM.getText().toString(),admin_cityGM.getText().toString(),
-                                admin_stateGM.getText().toString(),admin_zipGM.getText().toString(),admin_emailGM.getText().toString(),admin_phone.getText().toString());
-
-
-                        final boolean updateResult = dbManager.adminUpdateProfile(profile,keyUserName);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(adminViewGuestManager.this);
-
-                        builder.setTitle("Confirm");
-                        builder.setMessage("Are you sure?");
-
-                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing but close the dialog
-                                if(updateResult)
-                                {
-
-                                    startActivity(new Intent(adminViewGuestManager.this,adminViewGuestManager.class));
-                                }
-                                dialog.dismiss();
-                            }
-                        });
-
-                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                // Do nothing
-                                dialog.dismiss();
-                            }
-                        });
-
-                        AlertDialog alert = builder.create();
-                        alert.show();
-
-
-
-                        //Redirect to View Profile page with updated information showing on the screen
-                    }
-                });
-
-
-
-            }
-        });
-
-        admin_deleteGM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(adminViewGuestManager.this);
-
-                builder.setTitle("Confirm");
-                builder.setMessage("Are you sure?");
-
-                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-                        DBManager dbManager = new DBManager(adminViewGuestManager.this);
-                        final boolean res = dbManager.deleteUser(keyUserName);
-
-                        if(res)
-                        {
-                            startActivity(new Intent(adminViewGuestManager.this, searchGusetManager.class));
-                        }
-
-                        dialog.dismiss();
-                    }
-                });
-
-                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        // Do nothing
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog alert = builder.create();
-                alert.show();
-
-            }
-        });
-
-
-
     }
+
 }

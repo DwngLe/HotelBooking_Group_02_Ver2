@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -23,13 +24,16 @@ public class MyAdapter extends BaseAdapter {
 
     public static final String SHARED_PREF_NAME = "mypref";
     public static final String KEY_un = "username";
+    public static final String KEY_id = "id";
     SharedPreferences sharedpreferences;
 
     Context context;
-    ArrayList<Profile> arrayList;
+    List<Profile> arrayList;
     Button viewGM;
 
-    public MyAdapter(Context context, ArrayList<Profile> arrayList) {
+    Long id;
+
+    public MyAdapter(Context context, List<Profile> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -62,6 +66,7 @@ public class MyAdapter extends BaseAdapter {
         ln.setText(profile.getLastName());
         rl.setText(profile.getRole());
         un.setText(profile.getUsername());
+        id = profile.getId();
 
 
         viewGM.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +77,7 @@ public class MyAdapter extends BaseAdapter {
 //
                 SharedPreferences.Editor session = sharedpreferences.edit();
                 session.putString(KEY_un, un.getText().toString());
+                session.putLong(KEY_id, id);
                 session.apply();
 
                 Intent intent = new Intent(view.getContext(), adminViewGuestManager.class);

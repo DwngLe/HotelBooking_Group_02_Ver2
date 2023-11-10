@@ -17,18 +17,23 @@ import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.api.ApiService;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Registration;
+import com.example.hotelbookingsystem.model.RegistrationResponse;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class registrationScreen extends AppCompatActivity {
-    Boolean isSaved = false;
+    Boolean reg_success = false;
     Intent myIntent;
     Button reg;
-    EditText reg_user, reg_pwd, reg_last, reg_first, reg_cnum, reg_cname, reg_cexp, reg_staddr, reg_city, reg_state, reg_zip, reg_email, reg_phone;
-    TextView reg_success;
-    Spinner reg_ctype;
+    EditText reg_user, reg_pwd, reg_last, reg_first, card_num, name_on_card, expiry_date, reg_staddr, reg_city, reg_state, reg_zip, reg_email, reg_phone;
+    RegistrationResponse rr;
+    Spinner card_type;
     String role;
 
     @Override
@@ -43,10 +48,10 @@ public class registrationScreen extends AppCompatActivity {
         reg_pwd = findViewById(R.id.reg_pwd);
         reg_last = findViewById(R.id.reg_last);
         reg_first = findViewById(R.id.reg_first);
-        reg_cnum = findViewById(R.id.reg_cnum);
-        reg_cname = findViewById(R.id.reg_cname);
-        reg_ctype = (Spinner) findViewById(R.id.reg_ctype);
-        reg_cexp = findViewById(R.id.reg_cexp);
+        card_num = findViewById(R.id.reg_cnum);
+        name_on_card = findViewById(R.id.reg_cname);
+        card_type = (Spinner) findViewById(R.id.reg_ctype);
+        expiry_date = findViewById(R.id.reg_cexp);
         reg_staddr = findViewById(R.id.reg_staddr);
         reg_city = findViewById(R.id.reg_city);
         reg_state = findViewById(R.id.reg_state);
@@ -63,15 +68,14 @@ public class registrationScreen extends AppCompatActivity {
             public void onClick(View view) {
                 if ((reg_user.getText().toString().isEmpty()) || (reg_pwd.getText().toString().isEmpty()) || (reg_last.getText().toString().isEmpty()) || (reg_first.getText().toString().isEmpty())
                         || (reg_staddr.getText().toString().isEmpty()) || (reg_city.getText().toString().isEmpty()) || (reg_state.getText().toString().isEmpty()) || (reg_zip.getText().toString().isEmpty())
-                        || (reg_email.getText().toString().isEmpty()) || (reg_phone.getText().toString().isEmpty()) || (reg_cname.getText().toString().isEmpty()) || (reg_cexp.getText().toString().isEmpty())
-                        || (reg_cnum.getText().toString().isEmpty())) {
+                        || (reg_email.getText().toString().isEmpty()) || (reg_phone.getText().toString().isEmpty()) || (name_on_card.getText().toString().isEmpty()) || (expiry_date.getText().toString().isEmpty())
+                        || (card_num.getText().toString().isEmpty())) {
 
                     Toast.makeText(registrationScreen.this, "Fileds cannot be empty. Please enter all fields and try again", Toast.LENGTH_SHORT).show();
                 } else {
                     registerAccount();
-                    if (isSaved) {
-                        Toast.makeText(registrationScreen.this, "Register successfully!", Toast.LENGTH_SHORT).show();
-                        startActivity(myIntent);
+                    if (reg_success) {
+
                     }
                 }
 
@@ -81,23 +85,42 @@ public class registrationScreen extends AppCompatActivity {
     }
 
     private void registerAccount() {
-        Profile profile = new Profile(reg_user.getText().toString(), reg_pwd.getText().toString(), reg_first.getText().toString(), reg_last.getText().toString(), reg_staddr.getText().toString(),
-                reg_city.getText().toString(), reg_state.getText().toString(), reg_zip.getText().toString(), reg_email.getText().toString(),
-                reg_phone.getText().toString(), reg_cname.getText().toString(), reg_ctype.getSelectedItem().toString(), reg_cnum.getText().toString(),
-                reg_cexp.getText().toString());
-        ApiService.apiService.registerAccount(profile).enqueue(new Callback<Boolean>() {
+
+        Registration registration = new Registration(
+                reg_user.getText().toString(),
+                reg_pwd.getText().toString(),
+                reg_last.getText().toString(),
+                reg_first.getText().toString(),
+                name_on_card.getText().toString(),
+                card_num.getText().toString(),
+                expiry_date.getText().toString(),
+                reg_staddr.getText().toString(),
+                reg_city.getText().toString(),
+                reg_state.getText().toString(),
+                reg_zip.getText().toString(),
+                reg_email.getText().toString(),
+                reg_phone.getText().toString(),
+                card_type.getSelectedItem().toString());
+
+
+        ApiService.apiService.registerAccount(registration).enqueue(new Callback<RegistrationResponse>() {
             @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                isSaved = response.body();
-                if (isSaved) {
-                    System.out.println("Da luu account thanh cong, username: " + profile.getUsername());
+            public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
+                System.out.println("Chay vao onRespone");
+                System.out.println(registration.toString());
+
+                rr = response.body();
+                if (rr!=null) {
+                    Toast.makeText(registrationScreen.this, "Register successfully!", Toast.LENGTH_SHORT).show();
+                    startActivity(myIntent);
                 } else {
-                    System.out.println("Khong the luu account, username: " + profile.getUsername());
+                    Toast.makeText(registrationScreen.this, "Username or Card Number is existed, please choose another Username or Card Number", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
+            public void onFailure(Call<RegistrationResponse> call, Throwable t) {
                 Toast.makeText(registrationScreen.this, "Something is error, please try again", Toast.LENGTH_SHORT).show();
             }
         });

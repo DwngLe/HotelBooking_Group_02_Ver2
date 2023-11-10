@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="430dp"
+    android:layout_height="450dp"
+    android:background="@color/green_bgr"
     >
 
     <ImageView
@@ -33,13 +34,14 @@
         android:layout_marginTop="200dp"
         android:background="@null"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
 <!--asdasd-->
     <EditText
         android:id="@+id/rlHloc"
@@ -48,6 +50,8 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="4dp"
         android:background="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:text="location"
         android:textColor="@color/white"
         android:textSize="25dp"
@@ -73,7 +77,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        android:inputType="textPersonName"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:text="type"
         android:textColor="@color/white"
         android:textSize="20dp"
@@ -87,7 +92,8 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        android:inputType="textPersonName"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:text="money"
         android:textColor="@color/white"
         android:textSize="25dp"
@@ -99,6 +105,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:layout_marginTop="59dp"
         android:text="/ night"
         android:textColor="@color/white"

@@ -29,7 +29,7 @@ public class userHomeScreen extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userhomepage);
-        getSupportActionBar().setTitle("Hotel");
+        getSupportActionBar().setTitle("Home");
 
         search_room = findViewById(R.id.user_searchroom);
         view_profile = findViewById(R.id.imgbtnProfile);

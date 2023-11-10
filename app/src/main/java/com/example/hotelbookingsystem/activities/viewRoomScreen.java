@@ -58,7 +58,7 @@ public class viewRoomScreen extends AppCompatActivity {
 
         reserve = findViewById(R.id.viewReserve);
         logout = findViewById(R.id.viewLogout);
-        home = findViewById(R.id.viewHome);
+        home = findViewById(R.id.imgbtnHome);
 
         hotelName = findViewById(R.id.viewHotelName);
         hotelLocation = findViewById(R.id.viewHotelLocation);

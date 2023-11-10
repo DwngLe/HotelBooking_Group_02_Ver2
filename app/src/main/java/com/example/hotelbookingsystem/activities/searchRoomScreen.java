@@ -51,6 +51,8 @@ public class searchRoomScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_room);
 
+        getSupportActionBar().setTitle("Search Room");
+
         home = findViewById(R.id.userHome);
         logout = findViewById(R.id.logout);
         search = findViewById(R.id.search_r);
@@ -133,6 +135,7 @@ public class searchRoomScreen extends AppCompatActivity {
                 {
                     setContentView(R.layout.room_list);
                     room_listView = findViewById(R.id.room_listView);
+                    getSupportActionBar().setTitle("View List Room");
 
                     DBManager dbManager = new DBManager(searchRoomScreen.this);
                     arrayList = dbManager.getRoomDetails(Hroom.getSelectedItem().toString(),numOfNights);

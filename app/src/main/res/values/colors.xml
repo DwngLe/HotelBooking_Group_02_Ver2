@@ -14,4 +14,6 @@
     <color name="gray_area">#F2F2F2</color>
     <color name="gray_stroke">#C4C4C4</color>
     <color name="red">#B00020</color>
+    <color name="green_bgr">#A6E8F8EF</color>
+
 </resources>

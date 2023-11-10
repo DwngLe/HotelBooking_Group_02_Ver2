@@ -14,27 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/button_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="start"
-            android:text="Home" />
-
-        <Button
-            android:id="@+id/button_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="188dp"
-            android:gravity="end"
-            android:text="Logout" />
-
-
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -44,7 +24,8 @@
         android:padding="10dp"
         android:text="View List of Reservation "
         android:textAlignment="center"
-        android:textColor="@color/SteelBlue"
+        android:textStyle="bold"
+        android:textColor="@color/green"
         android:textSize="24dp" />
 
     <TextView
@@ -55,6 +36,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:text="Reservation Date:"
+        android:textColor="@color/green"
         android:textStyle="bold" />
 
     <EditText
@@ -75,6 +57,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:text="Room Type:"
+        android:textColor="@color/green"
         android:textStyle="bold" />
 
     <RadioGroup
@@ -109,7 +92,11 @@
         android:layout_width="242dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="view list" />
+        android:background="@drawable/background_btn"
+        style="@android:style/Widget.Button"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="View list" />
 
 
 
@@ -119,12 +106,148 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:orientation="horizontal">
-
-
-
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/bgr_layer"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/manager_summary_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_home"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Home"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/manager_listReservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_list"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Reservation"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/manager_summary_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_list" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Available"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/manager_summary_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_search" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Room"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/manager_summary_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_person" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Profile"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </LinearLayout>

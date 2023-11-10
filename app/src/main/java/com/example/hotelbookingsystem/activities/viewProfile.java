@@ -68,6 +68,31 @@ public class viewProfile extends AppCompatActivity {
 
         // Getting the editable fields and buttons with ID's
 
+        pro_name = findViewById(R.id.admin_profile_name);
+        pro_user = findViewById(R.id.admin_userGM);
+        pro_pwd = findViewById(R.id.admin_pwdGM);
+        pro_first = findViewById(R.id.admin_firstGM);
+        pro_last = findViewById(R.id.admin_lastGM);
+        pro_staddr = findViewById(R.id.admin_staddrGM);
+        pro_city = findViewById(R.id.admin_cityGM);
+        pro_state = findViewById(R.id.admin_stateGM);
+        pro_zip = findViewById(R.id.admin_zipGM);
+        pro_email = findViewById(R.id.admin_emailGM);
+        pro_phone = findViewById(R.id.admin_phoneGM);
+//        pro_cname = findViewById(R.id.pro_cname);
+//        pro_ctype = findViewById(R.id.pro_ctype);
+//        pro_cnum = findViewById(R.id.pro_cnum);
+//        pro_cexp = findViewById(R.id.pro_cexp);
+
+//        modify = findViewById(R.id.pro_modify);
+
+
+
+
+//        Profile profile = null;
+
+        // Getting the editable fields and buttons with ID's
+
 
         DBManager dbManager = new DBManager(viewProfile.this);
         Profile profile = dbManager.viewProfileDetails(user,role);

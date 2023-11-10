@@ -5,7 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F8F8">
+    android:background="@color/green_bgr">
+<!--    android:background="#F8F8F8"-->
+<!--    >-->
+<!--hhd-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -186,6 +189,7 @@
                 android:layout_marginRight="30dp"
                 android:text="@string/txt_view_room"
                 android:textColor="#000000"
+                android:gravity="center_horizontal"
                 android:textSize="16dp" />
 
             <View
@@ -427,7 +431,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -493,91 +497,117 @@
         </LinearLayout>
     </ScrollView>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frameLayout"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bgr_layer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
-            android:id="@+id/viewHome"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:background="#00FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_home" />
-
-        <TextView
-            android:id="@+id/textView36"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="45dp"
-            android:text="Home"
-            android:textColor="@color/green"
-            android:textSize="13dp" />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imageList"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="10dp"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/ic_action_list" />
+            <ImageButton
+                android:id="@+id/imgbtnHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_home"
+                tools:ignore="DuplicateIds" />
 
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Home"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="134dp"
-            android:layout_marginTop="45dp"
-            android:text="Booking"
-            android:textColor="@color/green"
-            android:textSize="13dp" />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imageHistory"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="10dp"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/ic_action_history" />
+            <ImageButton
+                android:id="@+id/imageList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_action_list" />
 
-        <TextView
-            android:id="@+id/textView40"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Booking"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="227dp"
-            android:layout_marginTop="45dp"
-            android:text="History"
-            android:textColor="@color/green"
-            android:textSize="13dp" />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imgbtnProfile"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="320dp"
-            android:layout_marginTop="10dp"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/ic_action_person" />
+            <ImageButton
+                android:id="@+id/imageHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_history" />
 
-        <TextView
-            android:id="@+id/textView38"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="History"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="319dp"
-            android:layout_marginTop="45dp"
-            android:text="Profile"
-            android:textColor="@color/green"
-            android:textSize="13dp" />
-    </FrameLayout>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imgbtnProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_person" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Profile"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

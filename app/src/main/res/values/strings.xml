@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Hotel Booking System</string>
 
+    <string name="txt_view_room">Phòng khách sạn của chúng tôi là biểu tượng sang trọng, với không gian mở rộng, sofa êm ái, và ánh sáng tự nhiên. Nội thất đẹp mắt, góc nhỏ trang trí tinh tế. Quầy bar phục vụ đa dạng đồ uống. Đội ngũ nhân viên nhiệt tình, tạo trải nghiệm thoải mái và đáng nhớ cho mọi người.</string>
+
     <string-array name="HName">
         <item>HaNoi</item>
         <item>SaiGon</item>

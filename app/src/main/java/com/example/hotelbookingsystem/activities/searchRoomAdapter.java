@@ -31,6 +31,7 @@ public class searchRoomAdapter extends BaseAdapter {
     ArrayList<Hotel> arrayList;
     Button viewRoom;
 
+
     public searchRoomAdapter(Context context, ArrayList<Hotel> arrayList) {
         this.context = context;
         this.arrayList = arrayList;

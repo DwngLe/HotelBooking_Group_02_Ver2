@@ -38,7 +38,7 @@
             android:parentActivityName=".activities.adminHomeScreen"/>
         <activity android:name=".activities.guestViewReservationSummary" />
         <activity android:name=".activities.searchRoomScreen" />
-        <activity android:name=".activities.roomListScreen" />
+<!--        <activity android:name=".activities.roomListScreen" />-->
         <activity android:name=".activities.viewRoomScreen" />
         <activity android:name=".activities.Searchroom" />
         <activity android:name=".activities.Available_rooms" />

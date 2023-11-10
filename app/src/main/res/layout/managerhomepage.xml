@@ -284,7 +284,33 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/imageList"
+                android:id="@+id/manager_listReservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/ic_action_list"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Reservation"
+                android:textColor="@color/green"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/manager_available"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF"
@@ -296,7 +322,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Booking"
+                android:text="Available"
                 android:textColor="@color/green"
                 android:textSize="13dp" />
         </LinearLayout>
@@ -309,19 +335,19 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/imageHistory"
+                android:id="@+id/manager_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
-                app:srcCompat="@drawable/ic_action_history" />
+                app:srcCompat="@drawable/ic_action_search" />
 
             <TextView
                 android:id="@+id/textView51"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="History"
+                android:text="Room"
                 android:textColor="@color/green"
                 android:textSize="13dp" />
         </LinearLayout>
@@ -334,7 +360,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/imgbtnProfile"
+                android:id="@+id/manager_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

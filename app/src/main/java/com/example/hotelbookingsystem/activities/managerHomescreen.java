@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.hotelbookingsystem.R;
 
 public class managerHomescreen extends AppCompatActivity {
-    Button manager_profile, manager_viewList, manager_availableRooms, manager_searchRoom, logout;
+    ImageButton manager_profile, manager_viewList, manager_availableRooms, manager_searchRoom, logout;
 
 
     @Override
@@ -24,7 +25,7 @@ public class managerHomescreen extends AppCompatActivity {
         manager_viewList = findViewById(R.id.manager_listReservation);
         manager_availableRooms = findViewById(R.id.manager_available);
         manager_searchRoom = findViewById(R.id.manager_search);
-        logout = findViewById(R.id.manager_logout);
+//        logout = findViewById(R.id.manager_logout);
 
         manager_viewList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,11 +57,5 @@ public class managerHomescreen extends AppCompatActivity {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(managerHomescreen.this, MainActivity.class));
-            }
-        });
     }
 }

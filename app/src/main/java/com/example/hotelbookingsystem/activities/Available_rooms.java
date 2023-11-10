@@ -17,6 +17,7 @@ import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -30,38 +31,65 @@ public class Available_rooms extends AppCompatActivity {
     EditText eText,sText;
     DBManager db;
     Button modify_room,navigate_home,view_available_rooms,availLogout;
+
+    ImageButton ibHome, ibReser, ibSearch, ibProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_rooms);
         db = new DBManager(this);
-//        modify_room = (Button)findViewById(R.id.modify_room_btn);
-//        modify_room.setMovementMethod(LinkMovementMethod.getInstance());
-//        modify_room.setOnClickListener(new View.OnClickListener() {
+        ibHome = findViewById(R.id.avaiRoom_home);
+        ibReser = findViewById(R.id.avaiRoom_reser);
+        ibProfile = findViewById(R.id.avaiRoom_profile);
+        ibSearch = findViewById(R.id.avaiRoom_search);
+
+        ibHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Available_rooms.this, managerHomescreen.class));
+            }
+        });
+
+        ibReser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Available_rooms.this, reservation_summary_manager_Activity.class));
+            }
+        });
+
+        ibProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Available_rooms.this, managerProfile.class));
+            }
+        });
+
+        ibSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Available_rooms.this, Searchroom.class));
+            }
+        });
+
+
+//
+//        availLogout = findViewById(R.id.availLogout);
+//
+//        availLogout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(Available_rooms.this, ModifyRoom.class);
+//                startActivity(new Intent(Available_rooms.this, MainActivity.class));
+//            }
+//        });
+//        navigate_home = (Button)findViewById(R.id.button8);
+//        navigate_home.setMovementMethod(LinkMovementMethod.getInstance());
+//        navigate_home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Available_rooms.this, managerHomescreen.class);
 //                startActivity(intent);
 //            }
 //        });
-
-        availLogout = findViewById(R.id.availLogout);
-
-        availLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Available_rooms.this, MainActivity.class));
-            }
-        });
-        navigate_home = (Button)findViewById(R.id.button8);
-        navigate_home.setMovementMethod(LinkMovementMethod.getInstance());
-        navigate_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Available_rooms.this, managerHomescreen.class);
-                startActivity(intent);
-            }
-        });
         eText=(EditText) findViewById(R.id.date_text);
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {

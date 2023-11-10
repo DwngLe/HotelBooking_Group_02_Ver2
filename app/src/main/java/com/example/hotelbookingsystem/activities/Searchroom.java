@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.hotelbookingsystem.R;
@@ -20,32 +21,47 @@ public class Searchroom extends AppCompatActivity {
     Button navigate_home, search_room, log, availLogout;
     TextView room_number , room_status , room_price , room_type ;
     DBManager db;
+
+    ImageButton ibHome, ibReser, ibAvaiable, ibProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new DBManager(this);
         setContentView(R.layout.activity_searchroom);
-        navigate_home = (Button)findViewById(R.id.button8);
-        navigate_home.setMovementMethod(LinkMovementMethod.getInstance());
-        navigate_home.setOnClickListener(new View.OnClickListener() {
+        ibHome = findViewById(R.id.searchR_home);
+        ibReser = findViewById(R.id.searchR_reser);
+        ibAvaiable = findViewById(R.id.searchR_avaiable);
+        ibProfile = findViewById(R.id.searchR_profile);
+
+        ibHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Searchroom.this, managerHomescreen.class);
-                startActivity(intent);
+                startActivity(new Intent(Searchroom.this, managerHomescreen.class));
+            }
+        });
+
+        ibReser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Searchroom.this, reservation_summary_manager_Activity.class));
+            }
+        });
+
+        ibAvaiable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Searchroom.this, Available_rooms.class));
+            }
+        });
+
+        ibProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Searchroom.this, managerProfile.class));
             }
         });
 
 
-
-
-        log = findViewById(R.id.availLogout);
-
-        log.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Searchroom.this,MainActivity.class));
-            }
-        });
 
         search_room = (Button)findViewById(R.id.search_room);
         search_room.setMovementMethod(LinkMovementMethod.getInstance());

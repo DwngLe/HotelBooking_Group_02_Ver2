@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,8 +20,12 @@ import java.util.ArrayList;
 
 public class viewRoomScreen extends AppCompatActivity {
 
-    Button reserve, logout, home;
-    EditText hotelName, hotelLocation, roomType, nBeds, rFacilities, cid, cod, nNights, price, totalPrice;
+    Button reserve, logout;
+    EditText hotelName, hotelLocation, roomType, nBeds, rFacilities, cid, cod, price, totalPrice;
+
+    EditText nNights;
+
+    ImageButton view_profile, home2, view_reservations, view_pending, home;
 
     SharedPreferences sharedpreferences;
 
@@ -31,6 +36,7 @@ public class viewRoomScreen extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_room_screen);
+        getSupportActionBar().setTitle("View Room");
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         final String rt = sharedpreferences.getString(searchRoomAdapter.KEY_rt, "");
@@ -44,6 +50,10 @@ public class viewRoomScreen extends AppCompatActivity {
         final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME, "");
         final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME, "");
         final String un = sharedpreferences.getString(MainActivity.KEY_USERNAME, "");
+        view_profile = findViewById(R.id.imgbtnProfile);
+        view_pending = findViewById(R.id.imageList);
+        view_reservations = findViewById(R.id.imageHistory);
+//        home2 = findViewById(R.id.imgbtnHome);
 
 
         reserve = findViewById(R.id.viewReserve);
@@ -57,7 +67,7 @@ public class viewRoomScreen extends AppCompatActivity {
         rFacilities = findViewById(R.id.viewRoomFacilities);
         cid = findViewById(R.id.viewCheckInDate);
         cod = findViewById(R.id.viewCheckOutDate);
-        nNights = findViewById(R.id.viewNights);
+//        nNights = findViewById(R.id.viewNights);
         price = findViewById(R.id.viewPrice);
         totalPrice = findViewById(R.id.viewTotalPrice);
 
@@ -87,16 +97,24 @@ public class viewRoomScreen extends AppCompatActivity {
         String bp = String.valueOf(billedPrice);
         String status = "Pending";
 
-//
+//        String loca = room.get(0).getHotelLocation().toString();
+////      if (location.equals("HaNoi")) {
+////            location = "Hà Nội";
+////        } else if (location.equals("NgheAn")) {
+////            location = "Nghệ An";
+////        } else {
+////            location = "Sài Gòn";
+////        }
+
         hotelName.setText(room.get(0).getHotelName());
-        hotelLocation.setText(room.get(0).getHotelLocation());
+        hotelLocation.setText(room.get(0).getHotelLocation().toString());
         roomType.setText(room.get(0).getRoomType());
         nBeds.setText(room.get(0).getNumberOfBeds());
         rFacilities.setText(room.get(0).getRoomFacilities());
         price.setText(room.get(0).getPricePerNight());
         cid.setText(check);
         cod.setText(check_out);
-        nNights.setText(numNights);
+//        nNights.setText(numNights);
         totalPrice.setText(String.format("%.2f", tot));
 
         hotelName.setFocusable(false);
@@ -107,10 +125,10 @@ public class viewRoomScreen extends AppCompatActivity {
         price.setFocusable(false);
         cid.setFocusable(false);
         cod.setFocusable(false);
-        nNights.setFocusable(false);
+//        nNights.setFocusable(false);
         totalPrice.setFocusable(false);
 
-        System.out.println(nNights);
+//        System.out.println(nNights);
 
         System.out.println("BILLING PRICE IS : " + bp);
 
@@ -154,5 +172,34 @@ public class viewRoomScreen extends AppCompatActivity {
                 startActivity(new Intent(viewRoomScreen.this, MainActivity.class));
             }
         });
+
+        view_pending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(viewRoomScreen.this,pendingRoomScreen.class));
+            }
+        });
+        view_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(viewRoomScreen.this,viewProfile.class));
+            }
+        });
+
+        view_reservations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(viewRoomScreen.this,reservation_summary_guest_Activity.class));
+            }
+        });
+
+//        home2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(viewRoomScreen.this,userHomeScreen.class));
+//
+//            }
+//        });
     }
+
 }

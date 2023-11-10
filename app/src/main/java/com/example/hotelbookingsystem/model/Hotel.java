@@ -1,5 +1,7 @@
 package com.example.hotelbookingsystem.model;
 
+import java.util.ArrayList;
+
 public class Hotel {
 
     private String hotelName;

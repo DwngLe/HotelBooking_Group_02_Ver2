@@ -36,4 +36,10 @@ public interface ApiService {
 
     @GET("admin/search")
     Call<UserResponse> getProfile(@Query("username") String username);
+
+    @GET("admin/searchByLastname")
+    Call<UserResponse> getUser(@Query("lastname") String lastname);
+
+
+
 }

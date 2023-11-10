@@ -17,7 +17,7 @@ import com.example.hotelbookingsystem.model.Profile;
 import java.util.ArrayList;
 
 public class searchGusetManager extends AppCompatActivity {
-
+//Day la Duong Le
     Button search,logout;
     EditText lastName;
     ListView lv_customerList;

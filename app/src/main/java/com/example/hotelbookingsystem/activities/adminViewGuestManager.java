@@ -116,31 +116,32 @@ public class adminViewGuestManager extends AppCompatActivity {
                 builder.setMessage("Are you sure?");
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-                        DBManager dbManager = new DBManager(adminViewGuestManager.this);
-                        final boolean res = dbManager.deleteUser(keyUserName);
+                        ApiService.apiService.deleteUser(id).enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.isSuccessful()) {
+                                    startActivity(new Intent(adminViewGuestManager.this, searchGusetManager.class));
+                                }else{
+                                    dialog.dismiss();
+                                }
+                            }
 
-                        if (res) {
-                            startActivity(new Intent(adminViewGuestManager.this, searchGusetManager.class));
-                        }
-
-                        dialog.dismiss();
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Toast.makeText(adminViewGuestManager.this, "Something is error", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
 
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        // Do nothing
                         dialog.dismiss();
                     }
                 });
-
                 AlertDialog alert = builder.create();
                 alert.show();
-
             }
         });
     }
@@ -163,12 +164,12 @@ public class adminViewGuestManager extends AppCompatActivity {
         });
     }
 
-    private void updateUser(Profile profile){
+    private void updateUser(Profile profile) {
         ApiService.apiService.updateUser(profile).enqueue(new Callback<Profile>() {
             @Override
             public void onResponse(Call<Profile> call, Response<Profile> response) {
                 Profile profile = response.body();
-                if(profile != null){
+                if (profile != null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(adminViewGuestManager.this);
                     builder.setTitle("Confirm");
                     builder.setMessage("Are you sure?");

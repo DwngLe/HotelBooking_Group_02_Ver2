@@ -6,19 +6,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.adapter.MyAdapter;
+import com.example.hotelbookingsystem.api.ApiService;
 import com.example.hotelbookingsystem.model.Profile;
+import com.example.hotelbookingsystem.model.UserResponse;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class searchGusetManager extends AppCompatActivity {
-//Day la Duong Le
-    Button search,logout;
+    //Day la Duong Le
+    Button search, logout;
     EditText lastName;
     ListView lv_customerList;
     ArrayList<Profile> arrayList;
@@ -37,65 +45,38 @@ public class searchGusetManager extends AppCompatActivity {
         search = findViewById(R.id.admin_search);
         lv_customerList = findViewById(R.id.admin_list);
         tvNumOfResult = findViewById(R.id.search_guest_manager_tv_numberOfResult);
-//        logout = findViewById(R.id.searchAdminLogout);
-
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(searchGusetManager.this,MainActivity.class));
-//            }
-//        });
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                String abc = lastName.getText().toString();
-                DBManager dbManager = new DBManager(searchGusetManager.this);
-                arrayList = dbManager.getAllUsers(abc);
-                int number = arrayList.size();
-                if(number > 0) {
-                    myAdapter = new MyAdapter(searchGusetManager.this, arrayList);
-                    lv_customerList.setAdapter(myAdapter);
-                    myAdapter.notifyDataSetChanged();
-                }
-                tvNumOfResult.setText("Found " + number + " results");
-
-//                Cursor cursor = dbManager.getEveryone(abc);
-//
-//
-//                String fn,ln,role;
-//
-//                List<Profile> ans = new ArrayList<>();
-//
-//
-//                if(cursor.getCount()>0)
-//                {
-//                    while(cursor.moveToNext())
-//                    {
-//                     //   String un = cursor.getString(1);
-//                        fn = cursor.getString(3);
-//                        ln = cursor.getString(4);
-//                        role = cursor.getString(15);
-//
-//                        Profile profile = new Profile(role,ln,fn);
-//                        ans.add(profile);
-//                    }
-//                }
-//
-//
-//
-//                ArrayAdapter newS = new ArrayAdapter<Profile>(searchGusetManager.this,android.R.layout.simple_list_item_1,ans);
-//                lv_customerList.setAdapter(newS);
-
-
-              //  Toast.makeText(searchGusetManager.this,profile.toString(), Toast.LENGTH_SHORT).show();
-
-
+                String userLastName = lastName.getText().toString();
+                getAllUserByLastName(userLastName);
             }
         });
+    }
 
-//        String abc = lastName.getText().toString();
+    private void getAllUserByLastName(String lastName) {
+        ApiService.apiService.getUserByLastName(lastName).enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                UserResponse userResponse = response.body();
+                if (userResponse != null) {
+                    List<Profile> profileList = userResponse.getUserList();
+                    int number = profileList.size();
+                    if (number > 0) {
+                        myAdapter = new MyAdapter(searchGusetManager.this, profileList);
+                        lv_customerList.setAdapter(myAdapter);
+                        myAdapter.notifyDataSetChanged();
+                    }
+                    tvNumOfResult.setText("Found " + number + " results");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(searchGusetManager.this, "Something is error", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

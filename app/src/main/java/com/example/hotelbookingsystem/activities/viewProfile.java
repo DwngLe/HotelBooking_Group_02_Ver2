@@ -54,10 +54,10 @@ public class viewProfile extends AppCompatActivity {
         pro_zip = findViewById(R.id.admin_zipGM);
         pro_email = findViewById(R.id.admin_emailGM);
         pro_phone = findViewById(R.id.admin_phoneGM);
-        pro_cname = findViewById(R.id.pro_cname);
-        pro_ctype = findViewById(R.id.pro_ctype);
-        pro_cnum = findViewById(R.id.pro_cnum);
-        pro_cexp = findViewById(R.id.pro_cexp);
+//        pro_cname = findViewById(R.id.pro_cname);
+//        pro_ctype = findViewById(R.id.pro_ctype);
+//        pro_cnum = findViewById(R.id.pro_cnum);
+//        pro_cexp = findViewById(R.id.pro_cexp);
 
         modify = findViewById(R.id.pro_modify);
 

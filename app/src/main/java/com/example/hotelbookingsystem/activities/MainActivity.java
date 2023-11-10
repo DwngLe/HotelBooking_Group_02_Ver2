@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkLogin() {
-        Profile profile = new Profile();
+        Profile profile = new Profile(id, admin_userGM.getText().toString(), admin_pwdGM.getText().toString(), admin_roleGM.getText().toString(), admin_lastGM.getText().toString(), admin_firstGM.getText().toString(), admin_staddrGM.getText().toString(), admin_cityGM.getText().toString(), admin_stateGM.getText().toString(), admin_zipGM.getText().toString(), admin_emailGM.getText().toString(), admin_phone.getText().toString());
         profile.setUsername(user.getText().toString().trim());
         profile.setPassword(pwd.getText().toString().trim());
         ApiService.apiService.checkLogin(profile).enqueue(new Callback<Profile>() {

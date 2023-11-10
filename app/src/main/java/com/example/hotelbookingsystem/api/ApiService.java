@@ -15,10 +15,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    String url = "http://172.18.112.1:8080/";
+    String url = "http://172.27.0.1:8080/";
     Gson gson = new GsonBuilder()
             .setDateFormat("dd-MM-yyy")
             .create();
@@ -38,8 +39,10 @@ public interface ApiService {
     Call<UserResponse> getProfile(@Query("username") String username);
 
     @GET("admin/searchByLastname")
-    Call<UserResponse> getUser(@Query("lastname") String lastname);
+    Call<UserResponse> getUserByLastName(@Query("lastname") String lastname);
 
+    @PUT("admin/update")
+    Call<Profile> updateUser(@Body Profile profile);
 
 
 }

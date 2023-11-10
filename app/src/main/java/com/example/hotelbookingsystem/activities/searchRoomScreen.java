@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -139,6 +140,39 @@ public class searchRoomScreen extends AppCompatActivity {
                     searchRoomAdapter = new searchRoomAdapter(searchRoomScreen.this,arrayList);
                     room_listView.setAdapter(searchRoomAdapter);
                     searchRoomAdapter.notifyDataSetChanged();
+                    ImageButton view_profile, logout, view_reservations, view_pending;
+                    view_profile = findViewById(R.id.imgbtnProfile);
+                    view_pending = findViewById(R.id.imageList);
+                    view_reservations = findViewById(R.id.imageHistory);
+                    logout = findViewById(R.id.imgbtnHome);
+
+                    view_pending.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(searchRoomScreen.this,pendingRoomScreen.class));
+                        }
+                    });
+                    view_profile.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(searchRoomScreen.this,viewProfile.class));
+                        }
+                    });
+
+                    view_reservations.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(searchRoomScreen.this,reservation_summary_guest_Activity.class));
+                        }
+                    });
+
+                    logout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(searchRoomScreen.this,userHomeScreen.class));
+
+                        }
+                    });
                 }
             }
         });
@@ -147,7 +181,6 @@ public class searchRoomScreen extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(searchRoomScreen.this, userHomeScreen.class));
 
             }

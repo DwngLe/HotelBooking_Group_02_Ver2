@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +16,11 @@ import com.example.hotelbookingsystem.R;
 
 
 public class userHomeScreen extends AppCompatActivity {
-    Button view_profile, search_room, view_pending, view_reservations, logout;
+    Button search_room;
     EditText heading;
     SharedPreferences sharedpreferences;
+
+    ImageButton view_profile, logout, view_reservations, view_pending;
 
     public static final String SHARED_PREF_NAME = "mypref";
 
@@ -26,16 +29,24 @@ public class userHomeScreen extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userhomepage);
+        getSupportActionBar().setTitle("Hotel");
 
-        view_profile = findViewById(R.id.user_viewprofile);
         search_room = findViewById(R.id.user_searchroom);
-        view_pending = findViewById(R.id.user_pending);
-        view_reservations = findViewById(R.id.user_reservationSummary);
-        logout = findViewById(R.id.manager_logout);
+        view_profile = findViewById(R.id.imgbtnProfile);
+        view_pending = findViewById(R.id.imageList);
+        view_reservations = findViewById(R.id.imageHistory);
+        logout = findViewById(R.id.imgbtnHome);
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         final String keyRole = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
 //        System.out.println(keyRole);
+
+        view_pending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(userHomeScreen.this,pendingRoomScreen.class));
+            }
+        });
         view_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +64,7 @@ public class userHomeScreen extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(userHomeScreen.this,MainActivity.class));
+                startActivity(new Intent(userHomeScreen.this,userHomeScreen.class));
 
             }
         });
@@ -62,13 +73,6 @@ public class userHomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(userHomeScreen.this,searchRoomScreen.class));
-            }
-        });
-
-        view_pending.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(userHomeScreen.this,pendingRoomScreen.class));
             }
         });
 

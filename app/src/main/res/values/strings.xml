@@ -2,9 +2,8 @@
     <string name="app_name">Hotel Booking System</string>
 
     <string-array name="HName">
-        <item>Arlington</item>
-        <item>Dallas</item>
-        <item>Irving</item>
+        <item>HaNoi</item>
+        <item>SaiGon</item>
 
     </string-array>
 

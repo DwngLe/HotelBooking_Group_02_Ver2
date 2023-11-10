@@ -1,140 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="430dp"
+    >
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="26dp"
-        android:text="Hotel Name : "
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/rlHname"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nn" />
+    <EditText
+        android:id="@+id/rlNnights"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:background="@null"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="26dp"
-        android:text="Hotel Location : "
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/rlHloc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="26dp"
-        android:text="Room Type : "
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/rlRtype"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="16dp"
-        android:text="Number of Nights : "
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/rlNnights"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="16dp"
-        android:text="Price Per Night : "
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/rlPprice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <EditText
         android:id="@+id/rlHname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="27dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="200dp"
+        android:background="@null"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+<!--asdasd-->
     <EditText
         android:id="@+id/rlHloc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="27dp"
-        android:ems="10"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="4dp"
+        android:background="@null"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="location"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rlHname" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:background="@null"
+        android:text="-"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        app:layout_constraintStart_toEndOf="@+id/rlHloc"
+        app:layout_constraintTop_toTopOf="@+id/rlHname" />
 
     <EditText
         android:id="@+id/rlRtype"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="27dp"
-        android:ems="10"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:background="@null"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rlHloc" />
-
-    <EditText
-        android:id="@+id/rlNnights"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rlRtype" />
+        android:text="type"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/rlHname" />
 
     <EditText
         android:id="@+id/rlPprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="27dp"
-        android:ems="10"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rlNnights" />
+        android:text="money"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlHloc" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
+        android:text="/ night"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/rlPprice"
+        app:layout_constraintTop_toTopOf="@+id/textView20" />
 
     <Button
         android:id="@+id/rlView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
         android:layout_marginStart="153dp"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="170dp"
+        android:background="@drawable/bgr_btnview"
         android:text="VIEW"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rlPprice" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

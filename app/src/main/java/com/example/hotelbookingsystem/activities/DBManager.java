@@ -193,7 +193,7 @@ public class DBManager extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
 
-        Profile profile = new Profile(id, admin_userGM.getText().toString(), admin_pwdGM.getText().toString(), admin_roleGM.getText().toString(), admin_lastGM.getText().toString(), admin_firstGM.getText().toString(), admin_staddrGM.getText().toString(), admin_cityGM.getText().toString(), admin_stateGM.getText().toString(), admin_zipGM.getText().toString(), admin_emailGM.getText().toString(), admin_phone.getText().toString());
+        Profile profile = new Profile();
 
 
         profile.setUsername(cursor.getString(1));

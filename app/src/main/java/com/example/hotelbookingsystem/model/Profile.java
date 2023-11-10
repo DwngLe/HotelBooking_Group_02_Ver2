@@ -20,26 +20,22 @@ public class Profile {
     private String phone;
     private String creditCardType;
 
-    public Profile(Long id, String password, String creditCardName, String creditCardNumber, String creditCardExp, String streetAddress, String city, String state, String zipCode, String email, String phone, String creditCardType)
+    public Profile()
     {}
 
-    public Profile(Long id, String username, String password, String role, String lastName, String firstName, String creditCardName, String creditCardNumber, String creditCardExp, String streetAddress, String city, String state, String zipCode, String email, String phone, String creditCardType) {
+    public Profile(Long id, String username, String password, String role, String lastName, String firstName, String streetAddress, String city, String state, String zipCode, String email, String phone) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.creditCardName = creditCardName;
-        this.creditCardNumber = creditCardNumber;
-        this.creditCardExp = creditCardExp;
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
         this.email = email;
         this.phone = phone;
-        this.creditCardType = creditCardType;
     }
 
     //For admin view selected guest/manager

@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    String url = "http://10.20.94.131:8080/";
+    String url = "http://192.168.197.207:8080/";
     Gson gson = new GsonBuilder()
             .setDateFormat("dd-MM-yyy")
             .create();

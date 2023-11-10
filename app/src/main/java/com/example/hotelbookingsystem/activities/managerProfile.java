@@ -58,20 +58,11 @@ public class managerProfile extends AppCompatActivity {
             }
         });
 
-
-
-//        Profile profile = null;
-
-        // Getting the editable fields and buttons with ID's
-
-
         DBManager dbManager = new DBManager(managerProfile.this);
         Profile profile = dbManager.viewProfileDetails(user,role);
 
-        //Setting the details from db to show
 
         setData(profile);
-
 
         //To make fields non Editable
         nonEdit();
@@ -120,20 +111,11 @@ public class managerProfile extends AppCompatActivity {
 
                         AlertDialog alert = builder.create();
                         alert.show();
-
-
-
-                        //Redirect to View Profile page with updated information showing on the screen
                     }
                 });
 
             }
         });
-
-
-        // Toast.makeText(this, profile.toString(), Toast.LENGTH_SHORT).show();
-
-
     }
 
     public void nonEdit()

@@ -43,7 +43,7 @@ public class viewProfile extends AppCompatActivity {
         final String user = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
         final String role = sharedpreferences.getString(MainActivity.KEY_ROLE,"");
 
-        pro_name = findViewById(R.id.pro_name);
+        pro_name = findViewById(R.id.admin_profile_name);
         pro_user = findViewById(R.id.admin_userGM);
         pro_pwd = findViewById(R.id.admin_pwdGM);
         pro_first = findViewById(R.id.admin_firstGM);
@@ -59,7 +59,7 @@ public class viewProfile extends AppCompatActivity {
 //        pro_cnum = findViewById(R.id.pro_cnum);
 //        pro_cexp = findViewById(R.id.pro_cexp);
 
-        modify = findViewById(R.id.pro_modify);
+//        modify = findViewById(R.id.pro_modify);
 
 
 

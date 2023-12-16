@@ -21,10 +21,17 @@ public class managerHomescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.managerhomepage);
 
+
+//        manager_profile = findViewById(R.id.manager_profile);
+//        manager_viewList = findViewById(R.id.manager_listReservation);
+//        manager_availableRooms = findViewById(R.id.manager_available);
+//        manager_searchRoom = findViewById(R.id.manager_search);
+
         manager_profile = findViewById(R.id.manager_profile);
         manager_viewList = findViewById(R.id.manager_listReservation);
         manager_availableRooms = findViewById(R.id.manager_available);
         manager_searchRoom = findViewById(R.id.manager_search);
+
 //        logout = findViewById(R.id.manager_logout);
 
         manager_viewList.setOnClickListener(new View.OnClickListener() {

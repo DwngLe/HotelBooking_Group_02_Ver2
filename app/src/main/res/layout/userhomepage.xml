@@ -8,24 +8,27 @@
     android:background="@color/green_bgr">
 
 
-    <Button
-        android:id="@+id/user_searchroom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="596dp"
-        android:paddingHorizontal="@android:dimen/app_icon_size"
-        android:text="Search Room"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/user_searchroom"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="596dp"-->
+<!--        android:paddingHorizontal="@android:dimen/app_icon_size"-->
+<!--        android:text="Search Room"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/frameLayout"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.866"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <FrameLayout
-        android:layout_width="353dp"
+        android:id="@+id/user_searchroom"
+        android:layout_width="384dp"
         android:layout_height="74dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bgr_search"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/bgr_layer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView41">
@@ -34,19 +37,25 @@
             android:id="@+id/imageButton"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="290dp"
+            android:layout_marginLeft="335dp"
             android:layout_marginTop="20dp"
             android:background="#00FFFFFF"
             app:srcCompat="@drawable/ic_action_search" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="279dp"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            app:boxBackgroundColor="@color/green_bgr">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Search" />
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Search"
+                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
     </FrameLayout>
 
@@ -55,8 +64,8 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/bgr_layer"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -98,8 +107,8 @@
                 android:id="@+id/imageList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
                 android:layout_weight="1"
+                android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_action_list" />
 
             <TextView
@@ -168,9 +177,9 @@
         android:id="@+id/textView41"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="40dp"
-        android:text="Hello !!!"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Hello,"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -179,21 +188,263 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/bgr_sroll_user"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_searchroom">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/green_bgr">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/bgr_layer"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:text="Hà Nội Hotel"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:gravity="left | center_vertical"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:text="See All"
+                    android:textColor="@color/green"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:gravity="right | center_vertical"/>
+            </LinearLayout>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bgr_layer"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="370dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp">
+
+                        <ImageView
+                            android:layout_width="370dp"
+                            android:layout_height="400dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/room1" />
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginTop="300dp"
+                            android:background="#66000000"
+                            android:text="Hotel Love $205"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="100dp"
+                            android:layout_marginTop="338dp"
+                            android:text="/ night"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"/>
+                    </RelativeLayout>
+
+                    <!-- Hình ảnh thứ hai và chi tiết -->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp">
+
+                        <ImageView
+                            android:layout_width="350dp"
+                            android:layout_height="400dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/nn" />
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginTop="300dp"
+                            android:background="#66000000"
+                            android:text="Hotel VIP $150"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="100dp"
+                            android:layout_marginTop="338dp"
+                            android:text="/ night"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/bgr_layer"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:text="Sài Gòn Hotel"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:gravity="left | center_vertical"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:text="See All"
+                    android:textColor="@color/green"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:gravity="right | center_vertical"/>
+            </LinearLayout>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bgr_layer"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="370dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp">
+
+                        <ImageView
+                            android:layout_width="370dp"
+                            android:layout_height="400dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/room1" />
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginTop="300dp"
+                            android:background="#66000000"
+                            android:text="Hotel Love $205"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="100dp"
+                            android:layout_marginTop="338dp"
+                            android:text="/ night"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"/>
+                    </RelativeLayout>
+
+                    <!-- Hình ảnh thứ hai và chi tiết -->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp">
+
+                        <ImageView
+                            android:layout_width="350dp"
+                            android:layout_height="400dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/nn" />
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginTop="300dp"
+                            android:background="#66000000"
+                            android:text="Hotel VIP $150"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="100dp"
+                            android:layout_marginTop="338dp"
+                            android:text="/ night"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
 
         </LinearLayout>
     </ScrollView>
+
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="23dp"
+        android:text="Hoang Duong"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/textView41"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

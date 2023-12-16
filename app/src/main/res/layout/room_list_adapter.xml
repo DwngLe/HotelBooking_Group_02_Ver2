@@ -33,7 +33,6 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="200dp"
         android:background="@null"
-        android:ems="10"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="30dp"

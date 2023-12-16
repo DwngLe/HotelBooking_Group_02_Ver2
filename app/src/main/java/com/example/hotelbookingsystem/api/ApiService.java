@@ -20,8 +20,13 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface ApiService {
+
 //    String url = "http://172.27.0.1:8080/"; // ip lê dương
-    String url = "http://10.20.5.242:8080/";// ip hhd
+//    String url = "http://10.20.5.242:8080/";// ip hhd
+
+    String url = "http://172.27.0.1:8080/";
+
+
     Gson gson = new GsonBuilder()
             .setDateFormat("dd-MM-yyy")
             .create();

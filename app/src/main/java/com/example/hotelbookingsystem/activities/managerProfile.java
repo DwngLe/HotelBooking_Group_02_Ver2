@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,6 +26,8 @@ public class managerProfile extends AppCompatActivity {
     TextView pro_name;
     SharedPreferences sharedpreferences;
 
+    ImageButton ibHome, ibReservation, ibAvaiable, ibSearch;
+
     public static final String SHARED_PREF_NAME = "mypref";
     //    @SuppressLint("WrongViewCast")
     @Override
@@ -34,22 +37,51 @@ public class managerProfile extends AppCompatActivity {
         final String user = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
         final String role = sharedpreferences.getString(MainActivity.KEY_ROLE,"");
 
-
-
         setContentView(R.layout.manager_profile);
-
         detailId();
+        ibHome = findViewById(R.id.maprofile_home);
+        ibAvaiable = findViewById(R.id.maprofile_avaiable);
+        ibReservation = findViewById(R.id.maprofile_reservation);
+        ibSearch = findViewById(R.id.maprofile_search);
 
-        home = findViewById(R.id.guestViewHome);
+        ibHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(managerProfile.this, managerHomescreen.class));
+            }
+        });
+
+        ibSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(managerProfile.this, Searchroom.class));
+            }
+        });
+
+        ibReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(managerProfile.this, reservation_summary_manager_Activity.class));
+            }
+        });
+
+        ibAvaiable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(managerProfile.this, Available_rooms.class));
+            }
+        });
+
+
         logout = findViewById(R.id.guestViewLogout);
 
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(managerProfile.this,managerHomescreen.class));
-            }
-        });
+//        home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(managerProfile.this,managerHomescreen.class));
+//            }
+//        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,7 +198,7 @@ public class managerProfile extends AppCompatActivity {
 
     public void detailId()
     {
-        pro_name = findViewById(R.id.pro_name);
+//        pro_name = findViewById(R.id.pro_name);
         pro_user = findViewById(R.id.admin_userGM);
         pro_pwd = findViewById(R.id.admin_pwdGM);
         pro_first = findViewById(R.id.admin_firstGM);
@@ -179,7 +211,7 @@ public class managerProfile extends AppCompatActivity {
         pro_phone = findViewById(R.id.admin_phoneGM);
 
 
-        modify = findViewById(R.id.pro_modify);
+        modify = findViewById(R.id.mana_pro_modify);
     }
 
 }

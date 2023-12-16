@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ public class reservation_summary_manager_Activity extends AppCompatActivity {
     RadioGroup RadioGroupRoomType;
     RadioButton RadioButtonStandard, RadioButtonDeluxe, RadioButtonSuite;
 
+    ImageButton ibHome, ibAvailable, ibSearch, ibProfile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +32,20 @@ public class reservation_summary_manager_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_summary_manager_);
 
 
-        ButtonLogOut = (Button)findViewById(R.id.button_logout);
-        ButtonHome = (Button) findViewById(R.id.button_home);
+//        ButtonLogOut = (Button)findViewById(R.id.button_logout);
+//        ButtonHome = (Button) findViewById(R.id.button_home);
         ButtonListView = (Button) findViewById(R.id.buttonListView);
         EditTextDate = (EditText)findViewById(R.id.editTextDate);
         RadioGroupRoomType = (RadioGroup) findViewById(R.id.radioGroup);
         RadioButtonStandard = (RadioButton) findViewById(R.id.radioButtonStandard);
         RadioButtonDeluxe = (RadioButton) findViewById(R.id.radioButtonDeluxe);
         RadioButtonSuite = (RadioButton) findViewById(R.id.radioButtonSuite);
+        ibHome = findViewById(R.id.manager_summary_home);
+        ibAvailable = findViewById(R.id.manager_summary_available);
+        ibProfile = findViewById(R.id.manager_summary_profile);
+        ibSearch = findViewById(R.id.manager_summary_search);
+
+
 
         ButtonListView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,20 +78,33 @@ public class reservation_summary_manager_Activity extends AppCompatActivity {
         });
 
 
-        ButtonLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(reservation_summary_manager_Activity.this, MainActivity.class));
-            }
-        });
-
-        ButtonHome.setOnClickListener(new View.OnClickListener() {
+        ibHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(reservation_summary_manager_Activity.this, managerHomescreen.class));
             }
         });
 
+        ibSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(reservation_summary_manager_Activity.this, Searchroom.class));
+            }
+        });
+
+        ibProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(reservation_summary_manager_Activity.this, managerProfile.class));
+            }
+        });
+
+        ibAvailable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(reservation_summary_manager_Activity.this, Available_rooms.class));
+            }
+        });
     }
 
 }

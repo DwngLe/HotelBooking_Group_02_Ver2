@@ -1,5 +1,6 @@
 package com.example.hotelbookingsystem.activities;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,226 +8,114 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.api.ApiService;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Reservation;
+import com.example.hotelbookingsystem.model.UserResponse;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class viewProfile extends AppCompatActivity {
 //    ScrollView sc = (ScrollView) findViewById(R.id.profile_scroll);
 
-    Button modify,home,logout;
+    Button logout;
     EditText pro_user,pro_pwd,pro_first,pro_last,pro_staddr,pro_city,pro_state,pro_zip,pro_email,pro_phone,pro_cname,pro_cnum,pro_cexp,pro_role;
     Spinner pro_ctype;
-    TextView pro_name;
+    TextView pro_name, tvName;
     SharedPreferences sharedpreferences;
+    ImageButton view_profile, view_home, view_reservations, view_pending;
 
     public static final String SHARED_PREF_NAME = "mypref";
 //    public static final String KEY_FIRSTNAME = "firstName";
 //    public static final String KEY_LASTNAME = "lastName";
 //    @SuppressLint("WrongViewCast")
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_profile);
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String user = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
-        final String role = sharedpreferences.getString(MainActivity.KEY_ROLE,"");
-
-
-        pro_name = findViewById(R.id.pro_name);
-
-        pro_user = findViewById(R.id.admin_userGM);
-        pro_pwd = findViewById(R.id.admin_pwdGM);
-        pro_first = findViewById(R.id.admin_firstGM);
-        pro_last = findViewById(R.id.admin_lastGM);
-        pro_staddr = findViewById(R.id.admin_staddrGM);
-        pro_city = findViewById(R.id.admin_cityGM);
-        pro_state = findViewById(R.id.admin_stateGM);
-        pro_zip = findViewById(R.id.admin_zipGM);
-        pro_email = findViewById(R.id.admin_emailGM);
-        pro_phone = findViewById(R.id.admin_phoneGM);
-//        pro_cname = findViewById(R.id.pro_cname);
-//        pro_ctype = findViewById(R.id.pro_ctype);
-//        pro_cnum = findViewById(R.id.pro_cnum);
-//        pro_cexp = findViewById(R.id.pro_cexp);
-
-//        modify = findViewById(R.id.pro_modify);
+        final String username = sharedpreferences.getString(MainActivity.KEY_USERNAME, "");
+        System.out.println("user name: " + username);
 
 
 
-
-//        Profile profile = null;
-
-        // Getting the editable fields and buttons with ID's
-
-        pro_name = findViewById(R.id.pro_name);
-        pro_user = findViewById(R.id.admin_userGM);
-        pro_pwd = findViewById(R.id.admin_pwdGM);
-        pro_first = findViewById(R.id.admin_firstGM);
-        pro_last = findViewById(R.id.admin_lastGM);
-        pro_staddr = findViewById(R.id.admin_staddrGM);
-        pro_city = findViewById(R.id.admin_cityGM);
-        pro_state = findViewById(R.id.admin_stateGM);
-        pro_zip = findViewById(R.id.admin_zipGM);
-        pro_email = findViewById(R.id.admin_emailGM);
-        pro_phone = findViewById(R.id.admin_phoneGM);
-//        pro_cname = findViewById(R.id.pro_cname);
-//        pro_ctype = findViewById(R.id.pro_ctype);
-//        pro_cnum = findViewById(R.id.pro_cnum);
-//        pro_cexp = findViewById(R.id.pro_cexp);
-
-//        modify = findViewById(R.id.pro_modify);
-
-
-
-
-//        Profile profile = null;
-
-        // Getting the editable fields and buttons with ID's
-
-
-        DBManager dbManager = new DBManager(viewProfile.this);
-        Profile profile = dbManager.viewProfileDetails(user,role);
-
-//        SharedPreferences.Editor session = sharedpreferences.edit();
-//        session.putString(KEY_FIRSTNAME, profile.getFirstName());
-//        session.putString(KEY_LASTNAME,profile.getLastName());
-//        session.apply();
-//        session.commit();
-
-        //Setting the details from db to show
-
-        setData(profile);
-
-
-        //To make fields non Editable
-        nonEdit();
-
-        home = findViewById(R.id.guestViewHome);
+        pro_user = findViewById(R.id.user_userGM);
+        pro_pwd = findViewById(R.id.user_pwdGM);
+        pro_first = findViewById(R.id.user_firstGM);
+        pro_last = findViewById(R.id.user_lastGM);
+        pro_staddr = findViewById(R.id.user_staddrGM);
+        pro_city = findViewById(R.id.user_cityGM);
+        pro_state = findViewById(R.id.user_stateGM);
+        pro_zip = findViewById(R.id.user_zipGM);
+        pro_email = findViewById(R.id.user_emailGM);
+        pro_phone = findViewById(R.id.user_phoneGM);
+        tvName = findViewById(R.id.user_profile_name);
         logout = findViewById(R.id.guestViewLogout);
 
+        view_profile = findViewById(R.id.imgbtnProfile);
+        view_pending = findViewById(R.id.imageList);
+        view_reservations = findViewById(R.id.imageHistory);
+        view_home = findViewById(R.id.imgbtnHome);
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(viewProfile.this,userHomeScreen.class));
-            }
-        });
+        getAdminProfile(username);
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(viewProfile.this,MainActivity.class));
+                startActivity(new Intent(viewProfile.this, MainActivity.class));
             }
         });
 
-        modify.setOnClickListener(new View.OnClickListener() {
+        view_pending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    edit();
-                    modify.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                startActivity(new Intent(viewProfile.this,pendingRoomScreen.class));
+            }
+        });
+        view_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(viewProfile.this,viewProfile.class));
+            }
+        });
 
-                            Profile profile = new Profile(pro_user.getText().toString(),pro_pwd.getText().toString(),pro_last.getText().toString(),pro_first.getText().toString(),
-                                    pro_cname.getText().toString(),pro_cnum.getText().toString(),pro_cexp.getText().toString(),pro_staddr.getText().toString(),pro_city.getText().toString(),
-                                    pro_state.getText().toString(),pro_zip.getText().toString(),pro_email.getText().toString(),pro_phone.getText().toString(),pro_ctype.getSelectedItem().toString());
+        view_reservations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(viewProfile.this,reservation_summary_guest_Activity.class));
+            }
+        });
 
-                            Reservation reservation = new Reservation(pro_first.getText().toString(),pro_last.getText().toString());
-
-                            final boolean updateResult = dbManager.updateProfile(profile,user,role,reservation);
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(viewProfile.this);
-
-                            builder.setTitle("Confirm");
-                            builder.setMessage("Are you sure?");
-
-                            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // Do nothing but close the dialog
-                                    if(updateResult)
-                                    {
-                                        startActivity(new Intent(viewProfile.this,viewProfile.class));
-                                    }
-                                    dialog.dismiss();
-                                }
-                            });
-
-                            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                    // Do nothing
-                                    dialog.dismiss();
-                                }
-                            });
-
-                            AlertDialog alert = builder.create();
-                            alert.show();
-
-
-
-                            //Redirect to View Profile page with updated information showing on the screen
-                        }
-                    });
+        view_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(viewProfile.this,userHomeScreen.class));
 
             }
         });
 
-
-
-
-       // Toast.makeText(this, profile.toString(), Toast.LENGTH_SHORT).show();
-
-
     }
 
-    public void nonEdit()
-    {
-        pro_user.setFocusable(false);
-        pro_pwd.setFocusable(false);
-        pro_first.setFocusable(false);
-        pro_last.setFocusable(false);
-        pro_staddr.setFocusable(false);
-        pro_state.setFocusable(false);
-        pro_city.setFocusable(false);
-        pro_zip.setFocusable(false);
-        pro_email.setFocusable(false);
-        pro_phone.setFocusable(false);
-        pro_cname.setFocusable(false);
-        pro_ctype.setFocusable(false);
-        pro_cnum.setFocusable(false);
-        pro_cexp.setFocusable(false);
 
-    }
-
-    public void edit()
-    {
-        pro_pwd.setFocusableInTouchMode(true);
-        pro_first.setFocusableInTouchMode(true);
-        pro_last.setFocusableInTouchMode(true);
-        pro_staddr.setFocusableInTouchMode(true);
-        pro_state.setFocusableInTouchMode(true);
-        pro_city.setFocusableInTouchMode(true);
-        pro_zip.setFocusableInTouchMode(true);
-        pro_email.setFocusableInTouchMode(true);
-        pro_phone.setFocusableInTouchMode(true);
-        pro_cname.setFocusableInTouchMode(true);
-
-        pro_name.setText("Modify Details");
-    }
-
-    public void setData(Profile profile)
-    {
+    public void setData(Profile profile) {
         pro_user.setText(profile.getUsername());
         pro_pwd.setText(profile.getPassword());
         pro_first.setText(profile.getFirstName());
@@ -237,14 +126,47 @@ public class viewProfile extends AppCompatActivity {
         pro_zip.setText(profile.getZipCode());
         pro_email.setText(profile.getEmail());
         pro_phone.setText(profile.getPhone());
-        pro_cname.setText(profile.getCreditCardName());
-        pro_cnum.setText(profile.getCreditCardNumber());
-        pro_cexp.setText(profile.getCreditCardExp().toString());
-
+        tvName.setText(profile.getLastName());
+//        pro_name.setText(profile.getFirstName() + " " + profile.getLastName());
 
 
     }
 
+    public void detailId() {
+
+
+    }
+
+        public void getAdminProfile(String username) {
+            System.out.println("uẻname size  " + username.length());
+
+            ApiService.apiService.getProfile(username).enqueue(new Callback<UserResponse>() {
+                @Override
+                public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                    System.out.println("Chay vao on respon o userProfile");
+                    UserResponse userProfile = response.body();
+                    System.out.println(userProfile);
+                    if (userProfile != null) {
+                        System.out.println(userProfile.getUserList().get(0).toString());
+                        final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME, "");
+                        final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME, "");
+                        final String rl = sharedpreferences.getString(MainActivity.KEY_ROLE, "");
+                        System.out.println("Last name is : " + ln + "\n\n" + "Firstname is : " + fn + "\n\n + Role is  : " + rl + "\\n\\n");
+                        setData(userProfile.getUserList().get(0));
+
+                    } else {
+                        System.out.println("userProfile rong");
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<UserResponse> call, Throwable t) {
+
+                    Toast.makeText(viewProfile.this, "Something is error, please try again", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
 }
 

@@ -24,7 +24,7 @@ public interface ApiService {
 //    String url = "http://172.27.0.1:8080/"; // ip lê dương
 //    String url = "http://10.20.5.242:8080/";// ip hhd
 
-    String url = "http://172.27.0.1:8080/";
+    String url = "http://192.168.3.140:8080/";
 
 
     Gson gson = new GsonBuilder()

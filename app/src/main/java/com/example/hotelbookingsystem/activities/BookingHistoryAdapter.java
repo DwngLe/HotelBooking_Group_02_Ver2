@@ -44,7 +44,7 @@ public class BookingHistoryAdapter extends RecyclerView .Adapter<BookingHistoryA
         String formattedCheckOutDate = sdf.format(booking.getCheck_out_date());
         holder.checkout.setText(formattedCheckOutDate);
         System.out.println(booking.toString());
-//        holder.price.setText(booking.getTotal_price());
+        holder.price.setText(booking.getTotal_price()+" VND");
     }
 
     @Override

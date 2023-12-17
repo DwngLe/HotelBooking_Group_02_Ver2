@@ -1,10 +1,14 @@
 package com.example.hotelbookingsystem.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Room {
 
     private String hotelName;
     private String hotelLocation;
+    @SerializedName("room_tyle")
     private String roomType;
+    @SerializedName("number_of_beds")
     private int numberOfBeds;
     private String roomFacilities;
     private String checkInDate;
@@ -16,11 +20,17 @@ public class Room {
     private String numberOfChildren;
     private String bookingId;
     private String totalPrice;
+    @SerializedName("room_number")
     private String roomNumber;
+    @SerializedName("room_status")
     private String roomStatus;
+    @SerializedName("room_floor")
     private String roomFloor;
+    @SerializedName("room_price")
     private Float roomPrice;
+    @SerializedName("room_desciption")
     private String roomDes;
+    @SerializedName("username")
     private String user;
 
 

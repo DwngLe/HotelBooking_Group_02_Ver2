@@ -3,11 +3,15 @@ package com.example.hotelbookingsystem.api;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Registration;
 import com.example.hotelbookingsystem.model.RegistrationResponse;
-import com.example.hotelbookingsystem.model.UserResponse;
+import com.example.hotelbookingsystem.model.Result;
 import com.example.hotelbookingsystem.model.Room;
+import com.example.hotelbookingsystem.model.RoomResponse;
+import com.example.hotelbookingsystem.model.UserResponse;
+import com.example.hotelbookingsystem.model.Room1;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -56,7 +60,15 @@ public interface ApiService {
     Call<Void> deleteUser(@Query("id") Long id);
 
     @POST("room")
-    Call<String> addRoom(@Body Room room);
+    Call<Result> addRoom(@Body Room1 room);
+
+    @GET("room")
+    Call<RoomResponse> getListRoom(
+            @Query("startDate") Date startDate,
+            @Query("endDate") Date endDate,
+            @Query("status") String status
+    );
+
 
 
 }

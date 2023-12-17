@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="false">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -39,7 +39,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
-                android:text="Date"
+                android:text="Start Date"
                 android:textColor="@color/green"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -51,7 +51,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="@string/enter_date" />
+                android:hint="Enter start date" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:text="Time"
+                android:text="End Date"
                 android:textColor="@color/green"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -71,26 +71,26 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="@string/enter_time" />
+                android:hint="Enter end date" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:text="Room Type"
-                android:textColor="@color/green"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="Room Type"-->
+<!--                android:textColor="@color/green"-->
+<!--                android:textSize="16dp"-->
+<!--                android:textStyle="bold" />-->
 
-            <Spinner
-                android:id="@+id/room_typ"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:entries="@array/Room_type" />
+<!--            <Spinner-->
+<!--                android:id="@+id/room_typ"-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:entries="@array/Room_type" />-->
 
             <Button
                 android:id="@+id/avl_room_search_btn"
@@ -104,12 +104,6 @@
                 android:text="Search"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" />
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -158,6 +152,13 @@
                     </TableRow>
                 </TableLayout>
             </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal" />
+
         </LinearLayout>
     </ScrollView>
     <LinearLayout

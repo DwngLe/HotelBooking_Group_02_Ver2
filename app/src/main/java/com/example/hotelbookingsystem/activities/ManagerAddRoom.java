@@ -11,13 +11,18 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import android.util.Log;
+
 
 import com.example.hotelbookingsystem.api.ApiService;
+import com.example.hotelbookingsystem.model.Result;
 import com.example.hotelbookingsystem.model.Room;
+import com.example.hotelbookingsystem.model.Room1;
 
 
 import com.example.hotelbookingsystem.R;
-import com.example.hotelbookingsystem.model.Room;
+import com.google.gson.Gson;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,24 +89,27 @@ public class ManagerAddRoom extends AppCompatActivity {
     }
 
     private void addRoom(String roomType, String user){
-        Room room = new Room();
+        Room1 room = new Room1();
         room.setRoomNumber(etRoomNumber.getText().toString());
-        room.setRoomFloor(etRoomFloor.getText().toString());
+        room.setRoomFloor(Integer.parseInt(etRoomFloor.getText().toString()));
         room.setRoomPrice(Float.parseFloat(etRoomPrice.getText().toString()));
         room.setRoomDes(etRoomDes.getText().toString());
         room.setNumberOfBeds(Integer.parseInt(etNumberOfBed.getText().toString()));
         room.setRoomType(roomType);
         room.setUser(user);
+        room.setRoomStatus(null);
 
-        System.out.println();
+        Gson gson = new Gson();
+        String json = gson.toJson(room);
+        System.out.println(json);
 
-        ApiService.apiService.addRoom(room).enqueue(new Callback<String>() {
+        ApiService.apiService.addRoom(room).enqueue(new Callback<Result>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Result> call, Response<Result> response) {
                 System.out.println("Chay vao onRespone");
-                String kq = response.body();
-                System.out.println("kq: "  + kq);
-                if(kq != null){
+                Result result = new Result(response.body().toString());
+                System.out.println("kq: "  + result);
+                if(result != null){
                     Toast.makeText(ManagerAddRoom.this, "Add room successfully!", Toast.LENGTH_SHORT).show();
                     startActivity(myIntent);
                 }else{
@@ -110,8 +118,9 @@ public class ManagerAddRoom extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Result> call, Throwable t) {
                 Toast.makeText(ManagerAddRoom.this, "Something is error, please try again", Toast.LENGTH_SHORT).show();
+                System.out.println("Error: " + t.getMessage());
             }
         });
 

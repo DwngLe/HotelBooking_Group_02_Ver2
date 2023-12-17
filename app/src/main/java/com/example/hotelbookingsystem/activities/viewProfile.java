@@ -51,7 +51,7 @@ public class viewProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_profile);
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String username = sharedpreferences.getString(MainActivity.KEY_USERNAME, "");
+        final String username = sharedpreferences.getString(Login.KEY_USERNAME, "");
         System.out.println("user name: " + username);
 
 
@@ -148,9 +148,9 @@ public class viewProfile extends AppCompatActivity {
                     System.out.println(userProfile);
                     if (userProfile != null) {
                         System.out.println(userProfile.getUserList().get(0).toString());
-                        final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME, "");
-                        final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME, "");
-                        final String rl = sharedpreferences.getString(MainActivity.KEY_ROLE, "");
+                        final String ln = sharedpreferences.getString(Login.KEY_LASTNAME, "");
+                        final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME, "");
+                        final String rl = sharedpreferences.getString(Login.KEY_ROLE, "");
                         System.out.println("Last name is : " + ln + "\n\n" + "Firstname is : " + fn + "\n\n + Role is  : " + rl + "\\n\\n");
                         setData(userProfile.getUserList().get(0));
 

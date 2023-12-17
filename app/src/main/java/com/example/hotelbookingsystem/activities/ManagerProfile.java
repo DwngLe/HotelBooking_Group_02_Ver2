@@ -10,13 +10,20 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.api.ApiService;
 import com.example.hotelbookingsystem.model.Profile;
+import com.example.hotelbookingsystem.model.UserResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ManagerProfile extends AppCompatActivity {
 
@@ -38,7 +45,9 @@ public class ManagerProfile extends AppCompatActivity {
         final String role = sharedpreferences.getString(Login.KEY_ROLE,"");
 
         setContentView(R.layout.manager_profile);
+
         detailId();
+
         ibHome = findViewById(R.id.maprofile_home);
         ibAvaiable = findViewById(R.id.maprofile_avaiable);
         ibReservation = findViewById(R.id.maprofile_reservation);
@@ -76,13 +85,6 @@ public class ManagerProfile extends AppCompatActivity {
         logout = findViewById(R.id.guestViewLogout);
 
 
-//        home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(managerProfile.this,managerHomescreen.class));
-//            }
-//        });
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,64 +92,61 @@ public class ManagerProfile extends AppCompatActivity {
             }
         });
 
-        DBManager dbManager = new DBManager(ManagerProfile.this);
-        Profile profile = dbManager.viewProfileDetails(user,role);
+       getManagerProfile(user);
 
-
-        setData(profile);
 
         //To make fields non Editable
         nonEdit();
 
-        modify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                edit();
-                modify.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //Have to save those details in DataBase
-
-                        DBManager dbManager = new DBManager(ManagerProfile.this);
-                        Profile profile = new Profile(pro_user.getText().toString(),pro_pwd.getText().toString(),pro_last.getText().toString(),pro_first.getText().toString(),
-                                pro_staddr.getText().toString(),pro_city.getText().toString(),pro_state.getText().toString(),pro_zip.getText().toString(),pro_email.getText().toString(),pro_phone.getText().toString());
-
-                        final boolean updateResult = dbManager.updateManagerProfile(profile,user);
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ManagerProfile.this);
-
-                        builder.setTitle("Confirm");
-                        builder.setMessage("Are you sure?");
-
-                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing but close the dialog
-                                if(updateResult)
-                                {
-                                    startActivity(new Intent(ManagerProfile.this, ManagerProfile.class));
-                                }
-                                dialog.dismiss();
-                            }
-                        });
-
-                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                // Do nothing
-                                dialog.dismiss();
-                            }
-                        });
-
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                    }
-                });
-
-            }
-        });
+//        modify.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                edit();
+//                modify.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        //Have to save those details in DataBase
+//
+//                        DBManager dbManager = new DBManager(ManagerProfile.this);
+//                        Profile profile = new Profile(pro_user.getText().toString(),pro_pwd.getText().toString(),pro_last.getText().toString(),pro_first.getText().toString(),
+//                                pro_staddr.getText().toString(),pro_city.getText().toString(),pro_state.getText().toString(),pro_zip.getText().toString(),pro_email.getText().toString(),pro_phone.getText().toString());
+//
+//                        final boolean updateResult = dbManager.updateManagerProfile(profile,user);
+//
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(ManagerProfile.this);
+//
+//                        builder.setTitle("Confirm");
+//                        builder.setMessage("Are you sure?");
+//
+//                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                // Do nothing but close the dialog
+//                                if(updateResult)
+//                                {
+//                                    startActivity(new Intent(ManagerProfile.this, ManagerProfile.class));
+//                                }
+//                                dialog.dismiss();
+//                            }
+//                        });
+//
+//                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                // Do nothing
+//                                dialog.dismiss();
+//                            }
+//                        });
+//
+//                        AlertDialog alert = builder.create();
+//                        alert.show();
+//                    }
+//                });
+//
+//            }
+//        });
     }
 
     public void nonEdit()
@@ -198,20 +197,48 @@ public class ManagerProfile extends AppCompatActivity {
 
     public void detailId()
     {
-//        pro_name = findViewById(R.id.pro_name);
-        pro_user = findViewById(R.id.admin_userGM);
-        pro_pwd = findViewById(R.id.admin_pwdGM);
-        pro_first = findViewById(R.id.admin_firstGM);
-        pro_last = findViewById(R.id.admin_lastGM);
-        pro_staddr = findViewById(R.id.admin_staddrGM);
-        pro_city = findViewById(R.id.admin_cityGM);
-        pro_state = findViewById(R.id.admin_stateGM);
-        pro_zip = findViewById(R.id.admin_zipGM);
-        pro_email = findViewById(R.id.admin_emailGM);
-        pro_phone = findViewById(R.id.admin_phoneGM);
+        pro_name = findViewById(R.id.manager_profile_name);
+        pro_user = findViewById(R.id.manager_profile_userGM);
+        pro_pwd = findViewById(R.id.manager_profile_pwdGM);
+        pro_first = findViewById(R.id.manager_profile_firstGM);
+        pro_last = findViewById(R.id.manager_profile_lastGM);
+        pro_staddr = findViewById(R.id.manager_profile_staddrGM);
+        pro_city = findViewById(R.id.manager_profile_cityGM);
+        pro_state = findViewById(R.id.manager_profile_stateGM);
+        pro_zip = findViewById(R.id.manager_profile_zipGM);
+        pro_email = findViewById(R.id.manager_profile_emailGM);
+        pro_phone = findViewById(R.id.manager_profile_phoneGM);
 
 
         modify = findViewById(R.id.mana_pro_modify);
+    }
+
+
+    public void getManagerProfile(String username) {
+        ApiService.apiService.getProfile(username).enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                System.out.println("Chay vao on respon o managerProfile");
+                UserResponse adminProfile = response.body();
+
+                if (adminProfile != null) {
+                    System.out.println(adminProfile.getUserList().get(0).toString());
+                    final String ln = sharedpreferences.getString(Login.KEY_LASTNAME, "");
+                    final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME, "");
+                    final String rl = sharedpreferences.getString(Login.KEY_ROLE, "");
+                    System.out.println("Last name is : " + ln + "\n\n" + "Firstname is : " + fn + "\n\n + Role is  : " + rl + "\\n\\n");
+                    setData(adminProfile.getUserList().get(0));
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+
+                Toast.makeText(ManagerProfile.this, "Something is error, please try again", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

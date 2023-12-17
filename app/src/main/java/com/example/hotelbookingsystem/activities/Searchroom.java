@@ -14,8 +14,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.hotelbookingsystem.R;
+import com.example.hotelbookingsystem.api.ApiService;
+import com.example.hotelbookingsystem.model.Room1;
 
 import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Searchroom extends AppCompatActivity {
     Button navigate_home, search_room, log, availLogout;
@@ -68,35 +74,43 @@ public class Searchroom extends AppCompatActivity {
         search_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Intent roomintent = new Intent(Searchroom.this, Searchroom.class);
                 Log.i("inside oncick ","inside oncick");
                 room_number = (TextView)findViewById( R.id.room_number );
                 room_status = (TextView)findViewById( R.id.room_status );
                 room_price = (TextView)findViewById( R.id.room_price );
                 room_type = (TextView)findViewById( R.id.room_type );
-                /*room_number.setText("1234");
-                room_status.setText("occ");
-                room_price.setText("1000");
-                room_type.setText("st");*/
 
                 EditText editText=findViewById(R. id. editText1);
-                String roomNumber =editText. getText(). toString();
-                HashMap<String,String> roomMap =  db.getHotelData(roomNumber);
+                String roomNumber =editText.getText().toString();
+
                 room_number = (TextView)findViewById( R.id.room_number );
                 room_status = (TextView)findViewById( R.id.room_status );
                 room_price = (TextView)findViewById( R.id.room_price );
                 room_type = (TextView)findViewById( R.id.room_type );
-                room_number.setText(roomMap.get("RoomNumber"));
-                room_status.setText(roomMap.get("roomStatus"));
-                room_price.setText(roomMap.get("pricePerNight"));
-                room_type.setText(roomMap.get("roomType"));
-                Log.i("RoomNumber ",room_number.getText().toString());
-                Log.i("roomStatus ",room_status.getText().toString());
-                Log.i("pricePerNight ",room_price.getText().toString());
-                Log.i("roomType ",room_type.getText().toString());
-                //startActivity(roomintent);
+
+                getRoomByNum(roomNumber);
             }
         });
-
     }
+
+    public void getRoomByNum(String roomNumber){
+        ApiService.apiService.getRoomByNumber(roomNumber).enqueue(new Callback<Room1>() {
+            @Override
+            public void onResponse(Call<Room1> call, Response<Room1> response) {
+                Room1 room1 = response.body();
+                if(room1 != null){
+                    room_number.setText(room1.getRoomNumber());
+                    room_status.setText("AVAILABLE");
+                    room_price.setText(room1.getRoomPrice().toString());
+                    room_type.setText(room1.getRoomType());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Room1> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

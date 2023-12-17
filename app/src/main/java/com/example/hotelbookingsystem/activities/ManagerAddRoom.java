@@ -75,7 +75,7 @@ public class ManagerAddRoom extends AppCompatActivity {
                     case R.id.manager_add_radioButtonDeluxe:
                         roomType = "Deluxe";
                         break;
-                    case R.id.radioButtonSuite:
+                    case R.id.manager_add_radioButtonSuite:
                         roomType = "Suite";
                         break;
                 }

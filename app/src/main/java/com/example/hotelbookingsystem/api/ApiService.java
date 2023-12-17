@@ -63,11 +63,14 @@ public interface ApiService {
     Call<Result> addRoom(@Body Room1 room);
 
     @GET("room")
-    Call<RoomResponse> getListRoom(
-            @Query("startDate") Date startDate,
-            @Query("endDate") Date endDate,
+    Call<List<Room1>> getListRoom(
+            @Query("startDate") String startDate,
+            @Query("endDate") String endDate,
             @Query("status") String status
     );
+
+    @GET("room/getByRoomnumber")
+    Call<Room1> getRoomByNumber(@Query("roomNumber") String roomNumber);
 
 
 

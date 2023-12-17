@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,7 +36,6 @@ import com.example.hotelbookingsystem.adapter.MyAdapter;
 import com.example.hotelbookingsystem.api.ApiService;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Room1;
-import com.example.hotelbookingsystem.model.RoomResponse;
 import com.example.hotelbookingsystem.model.UserResponse;
 
 import retrofit2.Call;
@@ -48,7 +48,7 @@ public class ManagerAvailableRooms extends AppCompatActivity {
     Button modify_room,navigate_home,view_available_rooms,availLogout;
     ImageButton ibHome, ibReser, ibSearch, ibProfile;
 
-    Date startDate, endDate;
+    String startDate, endDate;
     SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,21 +101,12 @@ public class ManagerAvailableRooms extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                // Format and display the date in "MM/dd/yyyy" format
+                                String formattedDate = String.format(Locale.US, "%02d/%02d/%d", monthOfYear + 1, dayOfMonth, year);
+                                eStartDate.setText(formattedDate);
+                                startDate = eStartDate.getText().toString();
 
-                                    eStartDate.setText(String.format("%02d/%02d/%d", monthOfYear + 1, dayOfMonth, year));
-                                    System.out.println("eStart: " + eStartDate.getText().toString());
-
-
-                                try {
-                                    // Use the same date format for parsing
-                                    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-                                    startDate = new java.sql.Date(dateFormat.parse(eStartDate.getText().toString()).getTime());
-                                    System.out.println("startDate: " + startDate);
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
                             }
-
                         }, year, month, day);
                 picker.show();
             }
@@ -138,20 +129,11 @@ public class ManagerAvailableRooms extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                if(dayOfMonth < 10){
-                                    eEndDate.setText(String.format("%02d/%02d/%d", monthOfYear + 1, dayOfMonth, year));
-                                } else {
-                                    eEndDate.setText(String.format("%02d/%02d/%d", monthOfYear + 1, dayOfMonth, year));
-                                }
+                                // Format and display the date in "MM/dd/yyyy" format
+                                String formattedDate = String.format(Locale.US, "%02d/%02d/%d", monthOfYear + 1, dayOfMonth, year);
+                                eEndDate.setText(formattedDate);
+                                endDate = eEndDate.getText().toString();
 
-                                try {
-                                    // Use the same date format for parsing
-                                    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-                                    endDate = new java.sql.Date(dateFormat.parse(eEndDate.getText().toString()).getTime());
-                                    System.out.println("endDate: " + endDate);
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
                             }
 
                         }, year, month, day);
@@ -163,24 +145,24 @@ public class ManagerAvailableRooms extends AppCompatActivity {
         view_available_rooms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    getAvaiableRoom(startDate, endDate, "AVAILABLE");
+
+                getAvaiableRoom(startDate, endDate, "AVAILABLE");
             }
         });
 
     }
 
-    private void getAvaiableRoom(Date startDate, Date endDate, String status){
-//        System.out.println("startDate: " + startDate);
-//        System.out.println("endDate: " + endDate);
-//        System.out.println("status: " + status);
-        ApiService.apiService.getListRoom(startDate, endDate, status).enqueue(new Callback<RoomResponse>() {
+    private void getAvaiableRoom(String startDate, String endDate, String status){
+        System.out.println("startDate: " + startDate);
+        System.out.println("endDate: " + endDate);
+        System.out.println("status: " + status);
+        ApiService.apiService.getListRoom(startDate, endDate, status).enqueue(new Callback<List<Room1>>() {
 
             @Override
-            public void onResponse(Call<RoomResponse> call, Response<RoomResponse> response) {
+            public void onResponse(Call<List<Room1>> call, Response<List<Room1>> response) {
                 System.out.println(1);
-                RoomResponse roomResponse = response.body();
-                if (roomResponse != null) {
-                    List<Room1> listRoom = roomResponse.getListRoom();
+                List<Room1> listRoom = response.body();
+                if (listRoom != null) {
                     System.out.println("Do dai danh sach cac phong trong la: " + listRoom.size());
                     TableLayout roomTableLayout = (TableLayout) findViewById(R.id.room_table);
                     for (Room1 room: listRoom) {
@@ -218,8 +200,10 @@ public class ManagerAvailableRooms extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<RoomResponse> call, Throwable t) {
+            public void onFailure(Call<List<Room1>> call, Throwable t) {
+                System.out.println("Chay vao onFailure");
                 Toast.makeText(ManagerAvailableRooms.this, "Something is error", Toast.LENGTH_SHORT).show();
+                System.out.println("Error: " + t.getMessage());
             }
         });
     }

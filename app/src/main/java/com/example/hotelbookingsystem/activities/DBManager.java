@@ -519,7 +519,7 @@ public class DBManager extends SQLiteOpenHelper {
         do {
 
 
-            room1 = new Room(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(7), cursor.getString(8), cursor.getString(6), cursor.getString(0), cursor.getString(9));
+            room1 = new Room(cursor.getString(1), cursor.getString(2), cursor.getString(3), Integer.parseInt(cursor.getString(7)), cursor.getString(8), cursor.getString(6), cursor.getString(0), cursor.getString(9));
 
 
 //            room1.setHotelName(cursor.getString(1));

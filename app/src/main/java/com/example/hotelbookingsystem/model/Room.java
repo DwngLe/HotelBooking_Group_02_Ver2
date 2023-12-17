@@ -5,7 +5,7 @@ public class Room {
     private String hotelName;
     private String hotelLocation;
     private String roomType;
-    private String numberOfBeds;
+    private int numberOfBeds;
     private String roomFacilities;
     private String checkInDate;
     private String checkOutDate;
@@ -18,6 +18,10 @@ public class Room {
     private String totalPrice;
     private String roomNumber;
     private String roomStatus;
+    private String roomFloor;
+    private Float roomPrice;
+    private String roomDes;
+    private String user;
 
 
     public Room(String checkInDate, String checkOutDate, String roomNumber, String roomStatus) {
@@ -43,7 +47,7 @@ public class Room {
     }
 
     //For View Room
-    public Room(String hotelName, String hotelLocation, String roomType, String numberOfBeds, String roomFacilities, String checkInDate, String checkOutDate, String numberOfNights, String pricePerNight, String totalPrice) {
+    public Room(String hotelName, String hotelLocation, String roomType, int numberOfBeds, String roomFacilities, String checkInDate, String checkOutDate, String numberOfNights, String pricePerNight, String totalPrice) {
         this.hotelName = hotelName;
         this.hotelLocation = hotelLocation;
         this.roomType = roomType;
@@ -85,7 +89,7 @@ public class Room {
         this.totalPrice = totalPrice;
     }
 
-    public Room(String hotelName, String hotelLocation, String roomType, String numberOfBeds, String roomFacilities, String pricePerNight, String roomNumber, String roomStatus) {
+    public Room(String hotelName, String hotelLocation, String roomType, int numberOfBeds, String roomFacilities, String pricePerNight, String roomNumber, String roomStatus) {
         this.hotelName = hotelName;
         this.hotelLocation = hotelLocation;
         this.roomType = roomType;
@@ -149,11 +153,11 @@ public class Room {
         this.roomType = roomType;
     }
 
-    public String getNumberOfBeds() {
+    public int getNumberOfBeds() {
         return numberOfBeds;
     }
 
-    public void setNumberOfBeds(String numberOfBeds) {
+    public void setNumberOfBeds(int numberOfBeds) {
         this.numberOfBeds = numberOfBeds;
     }
 
@@ -235,5 +239,37 @@ public class Room {
 
     public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getRoomFloor() {
+        return roomFloor;
+    }
+
+    public void setRoomFloor(String roomFloor) {
+        this.roomFloor = roomFloor;
+    }
+
+    public Float getRoomPrice() {
+        return roomPrice;
+    }
+
+    public void setRoomPrice(Float roomPrice) {
+        this.roomPrice = roomPrice;
+    }
+
+    public String getRoomDes() {
+        return roomDes;
+    }
+
+    public void setRoomDes(String roomDes) {
+        this.roomDes = roomDes;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

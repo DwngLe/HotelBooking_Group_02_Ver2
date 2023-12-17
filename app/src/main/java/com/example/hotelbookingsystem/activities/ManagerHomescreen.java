@@ -4,6 +4,7 @@ package com.example.hotelbookingsystem.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import com.example.hotelbookingsystem.R;
 
 public class ManagerHomescreen extends AppCompatActivity {
     ImageButton manager_profile, manager_viewList, manager_availableRooms, manager_searchRoom, logout;
+    Button btnAddRoom;
 
 
     @Override
@@ -20,18 +22,12 @@ public class ManagerHomescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.managerhomepage);
 
-
-//        manager_profile = findViewById(R.id.manager_profile);
-//        manager_viewList = findViewById(R.id.manager_listReservation);
-//        manager_availableRooms = findViewById(R.id.manager_available);
-//        manager_searchRoom = findViewById(R.id.manager_search);
-
         manager_profile = findViewById(R.id.manager_profile);
         manager_viewList = findViewById(R.id.manager_listReservation);
         manager_availableRooms = findViewById(R.id.manager_available);
         manager_searchRoom = findViewById(R.id.manager_search);
 
-//        logout = findViewById(R.id.manager_logout);
+        btnAddRoom = findViewById(R.id.manager_home_btn_add_room);
 
         manager_viewList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,5 +59,12 @@ public class ManagerHomescreen extends AppCompatActivity {
             }
         });
 
+        btnAddRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManagerHomescreen.this, ManagerAddRoom.class);
+                startActivity(intent);
+            }
+        });
     }
 }

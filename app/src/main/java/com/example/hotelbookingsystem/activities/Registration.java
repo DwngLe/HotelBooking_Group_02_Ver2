@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -15,19 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.api.ApiService;
-import com.example.hotelbookingsystem.model.Profile;
-import com.example.hotelbookingsystem.model.Registration;
 import com.example.hotelbookingsystem.model.RegistrationResponse;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class registrationScreen extends AppCompatActivity {
+public class Registration extends AppCompatActivity {
     Boolean reg_success = false;
     Intent myIntent;
     Button reg;
@@ -60,7 +53,7 @@ public class registrationScreen extends AppCompatActivity {
         reg_phone = findViewById(R.id.reg_phone);
 //        reg_success = findViewById(R.id.reg_success);
 
-        myIntent = new Intent(registrationScreen.this, MainActivity.class);
+        myIntent = new Intent(Registration.this, Login.class);
 
 
         reg.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +64,7 @@ public class registrationScreen extends AppCompatActivity {
                         || (reg_email.getText().toString().isEmpty()) || (reg_phone.getText().toString().isEmpty()) || (name_on_card.getText().toString().isEmpty()) || (expiry_date.getText().toString().isEmpty())
                         || (card_num.getText().toString().isEmpty())) {
 
-                    Toast.makeText(registrationScreen.this, "Fileds cannot be empty. Please enter all fields and try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registration.this, "Fileds cannot be empty. Please enter all fields and try again", Toast.LENGTH_SHORT).show();
                 } else {
                     registerAccount();
                     if (reg_success) {
@@ -86,7 +79,7 @@ public class registrationScreen extends AppCompatActivity {
 
     private void registerAccount() {
 
-        Registration registration = new Registration(
+        com.example.hotelbookingsystem.model.Registration registration = new com.example.hotelbookingsystem.model.Registration(
                 reg_user.getText().toString(),
                 reg_pwd.getText().toString(),
                 reg_last.getText().toString(),
@@ -111,17 +104,17 @@ public class registrationScreen extends AppCompatActivity {
 
                 rr = response.body();
                 if (rr!=null) {
-                    Toast.makeText(registrationScreen.this, "Register successfully!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registration.this, "Register successfully!", Toast.LENGTH_SHORT).show();
                     startActivity(myIntent);
                 } else {
-                    Toast.makeText(registrationScreen.this, "Username or Card Number is existed, please choose another Username or Card Number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registration.this, "Username or Card Number is existed, please choose another Username or Card Number", Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<RegistrationResponse> call, Throwable t) {
-                Toast.makeText(registrationScreen.this, "Something is error, please try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Registration.this, "Something is error, please try again", Toast.LENGTH_SHORT).show();
             }
         });
 

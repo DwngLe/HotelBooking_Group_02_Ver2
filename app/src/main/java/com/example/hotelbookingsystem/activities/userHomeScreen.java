@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -39,7 +38,7 @@ public class userHomeScreen extends AppCompatActivity {
         logout = findViewById(R.id.imgbtnHome);
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String keyRole = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
+        final String keyRole = sharedpreferences.getString(Login.KEY_USERNAME,"");
 //        System.out.println(keyRole);
 
         view_pending.setOnClickListener(new View.OnClickListener() {

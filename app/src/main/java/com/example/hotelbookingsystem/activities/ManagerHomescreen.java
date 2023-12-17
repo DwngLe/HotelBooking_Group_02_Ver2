@@ -12,8 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
 
-public class managerHomescreen extends AppCompatActivity {
+public class ManagerHomescreen extends AppCompatActivity {
     ImageButton manager_profile, manager_viewList, manager_availableRooms, manager_searchRoom, logout;
+    Button btnAddRoom;
 
 
     @Override
@@ -21,37 +22,31 @@ public class managerHomescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.managerhomepage);
 
-
-//        manager_profile = findViewById(R.id.manager_profile);
-//        manager_viewList = findViewById(R.id.manager_listReservation);
-//        manager_availableRooms = findViewById(R.id.manager_available);
-//        manager_searchRoom = findViewById(R.id.manager_search);
-
         manager_profile = findViewById(R.id.manager_profile);
         manager_viewList = findViewById(R.id.manager_listReservation);
         manager_availableRooms = findViewById(R.id.manager_available);
         manager_searchRoom = findViewById(R.id.manager_search);
 
-//        logout = findViewById(R.id.manager_logout);
+        btnAddRoom = findViewById(R.id.manager_home_btn_add_room);
 
         manager_viewList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerHomescreen.this, reservation_summary_manager_Activity.class));
+                startActivity(new Intent(ManagerHomescreen.this, ManagerReservationSummary.class));
             }
         });
 
         manager_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerHomescreen.this, managerProfile.class));
+                startActivity(new Intent(ManagerHomescreen.this, ManagerProfile.class));
             }
         });
 
         manager_availableRooms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(managerHomescreen.this, Available_rooms.class);
+                Intent intent = new Intent(ManagerHomescreen.this, ManagerAvailableRooms.class);
                 startActivity(intent);
             }
         });
@@ -59,10 +54,17 @@ public class managerHomescreen extends AppCompatActivity {
         manager_searchRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(managerHomescreen.this, Searchroom.class);
+                Intent intent = new Intent(ManagerHomescreen.this, Searchroom.class);
                 startActivity(intent);
             }
         });
 
+        btnAddRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManagerHomescreen.this, ManagerAddRoom.class);
+                startActivity(intent);
+            }
+        });
     }
 }

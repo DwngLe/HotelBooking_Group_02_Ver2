@@ -47,9 +47,9 @@ public class viewRoomScreen extends AppCompatActivity {
         final String numRooms = sharedpreferences.getString(searchRoomScreen.KEY_NUMBEROFROOMS, "");
         final String adults = sharedpreferences.getString(searchRoomScreen.KEY_ADULT, "");
         final String child = sharedpreferences.getString(searchRoomScreen.KEY_CHILDREN, "");
-        final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME, "");
-        final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME, "");
-        final String un = sharedpreferences.getString(MainActivity.KEY_USERNAME, "");
+        final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME, "");
+        final String ln = sharedpreferences.getString(Login.KEY_LASTNAME, "");
+        final String un = sharedpreferences.getString(Login.KEY_USERNAME, "");
         view_profile = findViewById(R.id.imgbtnProfile);
         view_pending = findViewById(R.id.imageList);
         view_reservations = findViewById(R.id.imageHistory);
@@ -169,7 +169,7 @@ public class viewRoomScreen extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(viewRoomScreen.this, MainActivity.class));
+                startActivity(new Intent(viewRoomScreen.this, Login.class));
             }
         });
 

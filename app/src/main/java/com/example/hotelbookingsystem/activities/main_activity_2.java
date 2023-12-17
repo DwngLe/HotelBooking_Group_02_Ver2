@@ -70,7 +70,7 @@ public class main_activity_2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(main_activity_2.this, reservation_summary_manager_Activity.class);
+                Intent intent = new Intent(main_activity_2.this, ManagerReservationSummary.class);
                 startActivity(intent);
             }
         });

@@ -22,7 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     Button reg, sign;
     EditText user, pwd;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (user.getText().toString().trim().length() <= 0 || pwd.getText().toString().trim().length() <= 0) {
-                    Toast.makeText(MainActivity.this, "Please fill all the information!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Please fill all the information!", Toast.LENGTH_SHORT).show();
                 } else {
                     checkLogin();
                 }
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, registrationScreen.class));
+                startActivity(new Intent(Login.this, Registration.class));
             }
         });
 
@@ -97,17 +97,17 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println("Thong tin dang nhap dc xac thuc, firstName:" + firstName + ", lastName: " + lastName + ", role: " + role);
 
                     if (role.equals("MANAGER")) {
-                        startActivity(new Intent(MainActivity.this, managerHomescreen.class));
+                        startActivity(new Intent(Login.this, ManagerHomescreen.class));
                         session.commit();
                         user.setText("");
                         pwd.setText("");
                     } else if (role.equals("ADMIN")) {
-                        startActivity(new Intent(MainActivity.this, adminHomeScreen.class));
+                        startActivity(new Intent(Login.this, AdminHome.class));
                         session.commit();
                         user.setText("");
                         pwd.setText("");
                     } else {
-                        startActivity(new Intent(MainActivity.this, userHomeScreen.class));
+                        startActivity(new Intent(Login.this, userHomeScreen.class));
                         session.commit();
                         user.setText("");
                         pwd.setText("");
@@ -115,14 +115,14 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     System.out.println("Khong nhan duoc ket qua");
-                    Toast.makeText(MainActivity.this, "Username or Password is not correct!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Username or Password is not correct!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
                 System.out.println("Da goi toi ham onFailure");
-                Toast.makeText(MainActivity.this, "Something is error, please try later!", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Something is error, please try later!", Toast.LENGTH_LONG).show();
                 user.setText("");
                 pwd.setText("");
             }

@@ -38,7 +38,7 @@ public class ModifyRoom extends AppCompatActivity{
         cancel_modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ModifyRoom.this, Available_rooms.class);
+                Intent intent = new Intent(ModifyRoom.this, ManagerAvailableRooms.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +49,7 @@ public class ModifyRoom extends AppCompatActivity{
         availLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ModifyRoom.this,MainActivity.class));
+                startActivity(new Intent(ModifyRoom.this, Login.class));
             }
         });
 
@@ -58,7 +58,7 @@ public class ModifyRoom extends AppCompatActivity{
         navigate_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ModifyRoom.this, managerHomescreen.class);
+                Intent intent = new Intent(ModifyRoom.this, ManagerHomescreen.class);
                 startActivity(intent);
             }
         });
@@ -97,7 +97,7 @@ public class ModifyRoom extends AppCompatActivity{
 
                 t.show();
 
-                startActivity(new Intent(ModifyRoom.this,Available_rooms.class));
+                startActivity(new Intent(ModifyRoom.this, ManagerAvailableRooms.class));
             }
         });
 

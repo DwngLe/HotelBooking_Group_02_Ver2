@@ -80,7 +80,7 @@ public class viewProfile extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(viewProfile.this, MainActivity.class));
+                startActivity(new Intent(viewProfile.this, Login.class));
             }
         });
 

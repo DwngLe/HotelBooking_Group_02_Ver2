@@ -84,7 +84,7 @@ public class reservation_summary_guest_Activity extends AppCompatActivity {
         ButtonLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(reservation_summary_guest_Activity.this, MainActivity.class));
+                startActivity(new Intent(reservation_summary_guest_Activity.this, Login.class));
             }
         });
 

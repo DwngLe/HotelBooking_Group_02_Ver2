@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
 
-public class adminHomeScreen extends AppCompatActivity {
+public class AdminHome extends AppCompatActivity {
 
     public static final String SHARED_PREF_NAME = "mypref";
     SharedPreferences sharedPreferences;
@@ -36,20 +36,20 @@ public class adminHomeScreen extends AppCompatActivity {
 //        admin_logout = findViewById(R.id.admin_logout);
         admin_home = findViewById(R.id.admin_viewHome);
         tvName = findViewById(R.id.admin_homepage_tv_name);
-        String name = sharedPreferences.getString(MainActivity.KEY_FIRSTNAME, "");
+        String name = sharedPreferences.getString(Login.KEY_FIRSTNAME, "");
         tvName.setText(name);
 
 
         admin_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminHomeScreen.this,adminProfile.class));
+                startActivity(new Intent(AdminHome.this, AdminProfile.class));
             }
         });
         admin_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminHomeScreen.this, searchGusetManager.class));
+                startActivity(new Intent(AdminHome.this, searchGusetManager.class));
             }
         });
 
@@ -63,7 +63,7 @@ public class adminHomeScreen extends AppCompatActivity {
         admin_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminHomeScreen.this, adminHomeScreen.class));
+                startActivity(new Intent(AdminHome.this, AdminHome.class));
             }
         });
     }

@@ -64,21 +64,21 @@ public class searchGusetManager extends AppCompatActivity {
         ibHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(searchGusetManager.this, adminHomeScreen.class));
+                startActivity(new Intent(searchGusetManager.this, AdminHome.class));
             }
         });
 
         ibSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(searchGusetManager.this, adminHomeScreen.class));
+                startActivity(new Intent(searchGusetManager.this, AdminHome.class));
             }
         });
 
         ibProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(searchGusetManager.this, adminProfile.class));
+                startActivity(new Intent(searchGusetManager.this, AdminProfile.class));
             }
         });
     }

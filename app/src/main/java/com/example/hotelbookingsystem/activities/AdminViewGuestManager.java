@@ -24,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class adminViewGuestManager extends AppCompatActivity {
+public class AdminViewGuestManager extends AppCompatActivity {
 
     SharedPreferences sharedpreferences;
 
@@ -111,7 +111,7 @@ public class adminViewGuestManager extends AppCompatActivity {
         admin_deleteGM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(adminViewGuestManager.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(AdminViewGuestManager.this);
                 builder.setTitle("Confirm");
                 builder.setMessage("Are you sure?");
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -120,7 +120,7 @@ public class adminViewGuestManager extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
                                 if (response.isSuccessful()) {
-                                    startActivity(new Intent(adminViewGuestManager.this, searchGusetManager.class));
+                                    startActivity(new Intent(AdminViewGuestManager.this, searchGusetManager.class));
                                 }else{
                                     dialog.dismiss();
                                 }
@@ -128,7 +128,7 @@ public class adminViewGuestManager extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<Void> call, Throwable t) {
-                                Toast.makeText(adminViewGuestManager.this, "Something is error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AdminViewGuestManager.this, "Something is error", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -159,7 +159,7 @@ public class adminViewGuestManager extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-                Toast.makeText(adminViewGuestManager.this, "Something is error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminViewGuestManager.this, "Something is error", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -170,14 +170,14 @@ public class adminViewGuestManager extends AppCompatActivity {
             public void onResponse(Call<Profile> call, Response<Profile> response) {
                 Profile profile = response.body();
                 if (profile != null) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(adminViewGuestManager.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(AdminViewGuestManager.this);
                     builder.setTitle("Confirm");
                     builder.setMessage("Are you sure?");
                     builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             // Do nothing but close the dialog
                             if (profile != null) {
-                                startActivity(new Intent(adminViewGuestManager.this, adminViewGuestManager.class));
+                                startActivity(new Intent(AdminViewGuestManager.this, AdminViewGuestManager.class));
                             }
                             dialog.dismiss();
                         }

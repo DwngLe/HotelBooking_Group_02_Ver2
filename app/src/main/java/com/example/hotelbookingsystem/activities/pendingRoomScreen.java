@@ -37,9 +37,9 @@ public class pendingRoomScreen extends AppCompatActivity {
         pendingList = findViewById(R.id.pendingList);
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME,"");
-        final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME,"");
-        final String user = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
+        final String ln = sharedpreferences.getString(Login.KEY_LASTNAME,"");
+        final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME,"");
+        final String user = sharedpreferences.getString(Login.KEY_USERNAME,"");
 
         DBManager dbManager = new DBManager(pendingRoomScreen.this);
 
@@ -61,7 +61,7 @@ public class pendingRoomScreen extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(pendingRoomScreen.this,MainActivity.class));
+                startActivity(new Intent(pendingRoomScreen.this, Login.class));
             }
         });
     }

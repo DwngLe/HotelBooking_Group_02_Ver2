@@ -36,28 +36,28 @@ public class Searchroom extends AppCompatActivity {
         ibHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Searchroom.this, managerHomescreen.class));
+                startActivity(new Intent(Searchroom.this, ManagerHomescreen.class));
             }
         });
 
         ibReser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Searchroom.this, reservation_summary_manager_Activity.class));
+                startActivity(new Intent(Searchroom.this, ManagerReservationSummary.class));
             }
         });
 
         ibAvaiable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Searchroom.this, Available_rooms.class));
+                startActivity(new Intent(Searchroom.this, ManagerAvailableRooms.class));
             }
         });
 
         ibProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Searchroom.this, managerProfile.class));
+                startActivity(new Intent(Searchroom.this, ManagerProfile.class));
             }
         });
 

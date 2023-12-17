@@ -1,121 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activities.ManagerReservationSummary">
+    tools:context=".activities.ManagerAddRoom">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"/>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginVertical="40dp"
-        android:padding="10dp"
-        android:text="View List of Reservation "
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textColor="@color/green"
-        android:textSize="24dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="Reservation Date:"
-        android:textColor="@color/green"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
-        android:hint="Enter Date"
-        android:inputType="date"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="Room Type:"
-        android:textColor="@color/green"
-        android:textStyle="bold" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="268dp"
-        android:layout_height="139dp"
-        android:layout_marginLeft="10dp">
-
-        <RadioButton
-            android:id="@+id/radioButtonStandard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:defaultFocusHighlightEnabled="true"
-            android:checked="true"
-            android:text="Standard" />
-
-        <RadioButton
-            android:id="@+id/radioButtonDeluxe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Deluxe" />
-
-        <RadioButton
-            android:id="@+id/radioButtonSuite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Suite" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/buttonListView"
-        android:layout_width="242dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/background_btn"
-        style="@android:style/Widget.Button"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:text="View list" />
-
-
-
-    <LinearLayout
+        android:id="@+id/textView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal">
-    </LinearLayout>
+        android:layout_marginTop="44dp"
+        android:text="Add a new room"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ScrollView
+        android:id="@+id/scrollView6"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView42"
+        tools:layout_editor_absoluteX="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/manager_add_et_room_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="Room number"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/manager_add_et_room_floor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="Room floor"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/manager_add_et_room_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="Room price"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/manager_add_et_room_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="Room Description"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/manager_add_et_room_number_beds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="Number of beds"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Room Type"
+                android:textColor="@color/green"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
+
+            <RadioGroup
+                android:id="@+id/manager_add_radioGroup"
+                android:layout_width="268dp"
+                android:layout_height="139dp"
+                android:layout_marginLeft="10dp">
+
+                <RadioButton
+                    android:id="@+id/manager_add_radioButtonStandard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:text="Standard" />
+
+                <RadioButton
+                    android:id="@+id/manager_add_radioButtonDeluxe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deluxe" />
+
+                <RadioButton
+                    android:id="@+id/manager_add_radioButtonSuite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Suite" />
+
+
+            </RadioGroup>
+        </LinearLayout>
+
+    </ScrollView>
     <LinearLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@drawable/bgr_layer"
-        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="90dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bgr_layer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -128,7 +136,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/manager_summary_home"
+                android:id="@+id/avaiRoom_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -154,7 +162,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/manager_listReservation"
+                android:id="@+id/avaiRoom_reser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -180,11 +188,11 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/manager_summary_available"
+                android:id="@+id/manager_available"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:background="#00FFFFFF"
+                android:layout_weight="1"
                 app:srcCompat="@drawable/ic_action_list" />
 
             <TextView
@@ -205,7 +213,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/manager_summary_search"
+                android:id="@+id/avaiRoom_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -230,7 +238,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/manager_summary_profile"
+                android:id="@+id/avaiRoom_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -249,7 +257,18 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/manager_add_btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_btn"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView6" />
 
-</LinearLayout>
 
-
+</androidx.constraintlayout.widget.ConstraintLayout>

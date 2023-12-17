@@ -78,9 +78,9 @@ public class List_of_Reservations_Guest_Activity extends AppCompatActivity {
         Total_Price_Array = new ArrayList<String>();
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME,"");
-        final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME,"");
-        final String un = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
+        final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME,"");
+        final String ln = sharedpreferences.getString(Login.KEY_LASTNAME,"");
+        final String un = sharedpreferences.getString(Login.KEY_USERNAME,"");
 
 
 
@@ -107,7 +107,7 @@ public class List_of_Reservations_Guest_Activity extends AppCompatActivity {
         ButtonLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(List_of_Reservations_Guest_Activity.this, MainActivity.class));
+                startActivity(new Intent(List_of_Reservations_Guest_Activity.this, Login.class));
             }
         });
 
@@ -138,9 +138,9 @@ public class List_of_Reservations_Guest_Activity extends AppCompatActivity {
         String toMonth = arr1[0];
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME,"");
-        final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME,"");
-        final String un = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
+        final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME,"");
+        final String ln = sharedpreferences.getString(Login.KEY_LASTNAME,"");
+        final String un = sharedpreferences.getString(Login.KEY_USERNAME,"");
 
 
         sqLiteDatabase = DBManager.getWritableDatabase();

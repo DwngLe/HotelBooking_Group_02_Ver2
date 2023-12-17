@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.hotelbookingsystem.R;
 
-public class login_intro extends AppCompatActivity {
+public class LoginIntro extends AppCompatActivity {
     Button btnStart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class login_intro extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(login_intro.this, MainActivity.class);
+                Intent myIntent = new Intent(LoginIntro.this, Login.class);
                 startActivity(myIntent);
             }
         });

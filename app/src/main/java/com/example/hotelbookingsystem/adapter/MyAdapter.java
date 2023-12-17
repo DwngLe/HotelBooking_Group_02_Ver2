@@ -11,14 +11,13 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.R;
-import com.example.hotelbookingsystem.activities.adminViewGuestManager;
+import com.example.hotelbookingsystem.activities.AdminViewGuestManager;
 
 public class MyAdapter extends BaseAdapter {
 
@@ -80,7 +79,7 @@ public class MyAdapter extends BaseAdapter {
                 session.putLong(KEY_id, id);
                 session.apply();
 
-                Intent intent = new Intent(view.getContext(), adminViewGuestManager.class);
+                Intent intent = new Intent(view.getContext(), AdminViewGuestManager.class);
                 view.getContext().startActivity(intent);
             }
         });

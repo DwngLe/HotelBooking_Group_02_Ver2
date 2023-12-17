@@ -18,10 +18,6 @@ import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Reservation;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class viewProfile extends AppCompatActivity {
 //    ScrollView sc = (ScrollView) findViewById(R.id.profile_scroll);
 
@@ -40,11 +36,11 @@ public class viewProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_profile);
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String user = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
-        final String role = sharedpreferences.getString(MainActivity.KEY_ROLE,"");
+        final String user = sharedpreferences.getString(Login.KEY_USERNAME,"");
+        final String role = sharedpreferences.getString(Login.KEY_ROLE,"");
 
 
-        pro_name = findViewById(R.id.pro_name);
+//        pro_name = findViewById(R.id.pro_name);
 
         pro_user = findViewById(R.id.admin_userGM);
         pro_pwd = findViewById(R.id.admin_pwdGM);
@@ -127,7 +123,7 @@ public class viewProfile extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(viewProfile.this,MainActivity.class));
+                startActivity(new Intent(viewProfile.this, Login.class));
             }
         });
 

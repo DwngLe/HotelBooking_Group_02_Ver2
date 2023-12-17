@@ -44,9 +44,9 @@ public class guestViewReservationSummary extends AppCompatActivity {
         //Getting first name and lastname form session
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME,"");
-        final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME,"");
-        final String user = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
+        final String ln = sharedpreferences.getString(Login.KEY_LASTNAME,"");
+        final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME,"");
+        final String user = sharedpreferences.getString(Login.KEY_USERNAME,"");
         System.out.println("Last name is : " + ln + "\n\n" + "Firstname is : " + fn + "\n\n");
 
         DBManager dbManager = new DBManager(guestViewReservationSummary.this);

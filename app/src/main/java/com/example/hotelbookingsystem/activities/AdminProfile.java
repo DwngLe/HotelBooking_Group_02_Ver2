@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,15 +17,11 @@ import com.example.hotelbookingsystem.api.ApiService;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.UserResponse;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class adminProfile extends AppCompatActivity {
+public class AdminProfile extends AppCompatActivity {
 
     Button home, logout;
     TextView pro_user, pro_pwd, pro_first, pro_last, pro_staddr, pro_city, pro_state, pro_zip, pro_email, pro_phone;
@@ -43,9 +38,9 @@ public class adminProfile extends AppCompatActivity {
         getSupportActionBar().setTitle("Admin Management");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
-        final String username = sharedpreferences.getString(MainActivity.KEY_USERNAME, "");
+        final String username = sharedpreferences.getString(Login.KEY_USERNAME, "");
         System.out.println("username: " + username);
-        final String role = sharedpreferences.getString(MainActivity.KEY_ROLE, "");
+        final String role = sharedpreferences.getString(Login.KEY_ROLE, "");
         setContentView(R.layout.activity_admin_profile);
 
         pro_name = findViewById(R.id.admin_profile_name);
@@ -68,21 +63,21 @@ public class adminProfile extends AppCompatActivity {
         ibSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminProfile.this, searchGusetManager.class));
+                startActivity(new Intent(AdminProfile.this, searchGusetManager.class));
             }
         });
 
         ibHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminProfile.this, adminHomeScreen.class));
+                startActivity(new Intent(AdminProfile.this, AdminHome.class));
             }
         });
 
         ibProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminProfile.this, adminProfile.class));
+                startActivity(new Intent(AdminProfile.this, AdminProfile.class));
             }
         });
 
@@ -92,7 +87,7 @@ public class adminProfile extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminProfile.this, MainActivity.class));
+                startActivity(new Intent(AdminProfile.this, Login.class));
             }
         });
 
@@ -130,9 +125,9 @@ public class adminProfile extends AppCompatActivity {
 
                 if (adminProfile != null) {
                     System.out.println(adminProfile.getUserList().get(0).toString());
-                    final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME, "");
-                    final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME, "");
-                    final String rl = sharedpreferences.getString(MainActivity.KEY_ROLE, "");
+                    final String ln = sharedpreferences.getString(Login.KEY_LASTNAME, "");
+                    final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME, "");
+                    final String rl = sharedpreferences.getString(Login.KEY_ROLE, "");
                     System.out.println("Last name is : " + ln + "\n\n" + "Firstname is : " + fn + "\n\n + Role is  : " + rl + "\\n\\n");
                     setData(adminProfile.getUserList().get(0));
 
@@ -143,7 +138,7 @@ public class adminProfile extends AppCompatActivity {
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
 
-                Toast.makeText(adminProfile.this, "Something is error, please try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminProfile.this, "Something is error, please try again", Toast.LENGTH_SHORT).show();
             }
         });
     }

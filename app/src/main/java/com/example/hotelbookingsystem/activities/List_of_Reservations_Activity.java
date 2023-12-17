@@ -79,7 +79,7 @@ public class List_of_Reservations_Activity extends AppCompatActivity {
         ButtonLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(List_of_Reservations_Activity.this, MainActivity.class));
+                startActivity(new Intent(List_of_Reservations_Activity.this, Login.class));
             }
         });
 
@@ -88,7 +88,7 @@ public class List_of_Reservations_Activity extends AppCompatActivity {
         ButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(List_of_Reservations_Activity.this, managerHomescreen.class));
+                startActivity(new Intent(List_of_Reservations_Activity.this, ManagerHomescreen.class));
             }
         });
 

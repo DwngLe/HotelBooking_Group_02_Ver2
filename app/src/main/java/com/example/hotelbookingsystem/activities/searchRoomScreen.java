@@ -192,7 +192,7 @@ public class searchRoomScreen extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(searchRoomScreen.this,MainActivity.class));
+                startActivity(new Intent(searchRoomScreen.this, Login.class));
             }
         });
 

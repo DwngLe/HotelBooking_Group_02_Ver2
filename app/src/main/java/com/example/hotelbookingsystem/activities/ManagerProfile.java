@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.model.Profile;
 
-public class managerProfile extends AppCompatActivity {
+public class ManagerProfile extends AppCompatActivity {
 
     Button modify,home,logout;
     EditText pro_user,pro_pwd,pro_first,pro_last,pro_staddr,pro_city,pro_state,pro_zip,pro_email,pro_phone,pro_cname,pro_cnum,pro_cexp,pro_role;
@@ -34,8 +34,8 @@ public class managerProfile extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        final String user = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
-        final String role = sharedpreferences.getString(MainActivity.KEY_ROLE,"");
+        final String user = sharedpreferences.getString(Login.KEY_USERNAME,"");
+        final String role = sharedpreferences.getString(Login.KEY_ROLE,"");
 
         setContentView(R.layout.manager_profile);
         detailId();
@@ -47,28 +47,28 @@ public class managerProfile extends AppCompatActivity {
         ibHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerProfile.this, managerHomescreen.class));
+                startActivity(new Intent(ManagerProfile.this, ManagerHomescreen.class));
             }
         });
 
         ibSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerProfile.this, Searchroom.class));
+                startActivity(new Intent(ManagerProfile.this, Searchroom.class));
             }
         });
 
         ibReservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerProfile.this, reservation_summary_manager_Activity.class));
+                startActivity(new Intent(ManagerProfile.this, ManagerReservationSummary.class));
             }
         });
 
         ibAvaiable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerProfile.this, Available_rooms.class));
+                startActivity(new Intent(ManagerProfile.this, ManagerAvailableRooms.class));
             }
         });
 
@@ -86,11 +86,11 @@ public class managerProfile extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerProfile.this,MainActivity.class));
+                startActivity(new Intent(ManagerProfile.this, Login.class));
             }
         });
 
-        DBManager dbManager = new DBManager(managerProfile.this);
+        DBManager dbManager = new DBManager(ManagerProfile.this);
         Profile profile = dbManager.viewProfileDetails(user,role);
 
 
@@ -108,13 +108,13 @@ public class managerProfile extends AppCompatActivity {
                     public void onClick(View view) {
                         //Have to save those details in DataBase
 
-                        DBManager dbManager = new DBManager(managerProfile.this);
+                        DBManager dbManager = new DBManager(ManagerProfile.this);
                         Profile profile = new Profile(pro_user.getText().toString(),pro_pwd.getText().toString(),pro_last.getText().toString(),pro_first.getText().toString(),
                                 pro_staddr.getText().toString(),pro_city.getText().toString(),pro_state.getText().toString(),pro_zip.getText().toString(),pro_email.getText().toString(),pro_phone.getText().toString());
 
                         final boolean updateResult = dbManager.updateManagerProfile(profile,user);
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(managerProfile.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ManagerProfile.this);
 
                         builder.setTitle("Confirm");
                         builder.setMessage("Are you sure?");
@@ -125,7 +125,7 @@ public class managerProfile extends AppCompatActivity {
                                 // Do nothing but close the dialog
                                 if(updateResult)
                                 {
-                                    startActivity(new Intent(managerProfile.this,managerProfile.class));
+                                    startActivity(new Intent(ManagerProfile.this, ManagerProfile.class));
                                 }
                                 dialog.dismiss();
                             }

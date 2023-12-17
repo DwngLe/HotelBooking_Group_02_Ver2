@@ -4,7 +4,6 @@ package com.example.hotelbookingsystem.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
@@ -12,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbookingsystem.R;
 
-public class managerHomescreen extends AppCompatActivity {
+public class ManagerHomescreen extends AppCompatActivity {
     ImageButton manager_profile, manager_viewList, manager_availableRooms, manager_searchRoom, logout;
 
 
@@ -37,21 +36,21 @@ public class managerHomescreen extends AppCompatActivity {
         manager_viewList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerHomescreen.this, reservation_summary_manager_Activity.class));
+                startActivity(new Intent(ManagerHomescreen.this, ManagerReservationSummary.class));
             }
         });
 
         manager_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(managerHomescreen.this, managerProfile.class));
+                startActivity(new Intent(ManagerHomescreen.this, ManagerProfile.class));
             }
         });
 
         manager_availableRooms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(managerHomescreen.this, Available_rooms.class);
+                Intent intent = new Intent(ManagerHomescreen.this, ManagerAvailableRooms.class);
                 startActivity(intent);
             }
         });
@@ -59,7 +58,7 @@ public class managerHomescreen extends AppCompatActivity {
         manager_searchRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(managerHomescreen.this, Searchroom.class);
+                Intent intent = new Intent(ManagerHomescreen.this, Searchroom.class);
                 startActivity(intent);
             }
         });

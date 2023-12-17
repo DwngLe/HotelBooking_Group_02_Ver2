@@ -37,9 +37,9 @@ public class reserveRoomScreen extends AppCompatActivity {
         final String numRooms = sharedpreferences.getString(searchRoomScreen.KEY_NUMBEROFROOMS,"");
         final String adults = sharedpreferences.getString(searchRoomScreen.KEY_ADULT,"");
         final String child = sharedpreferences.getString(searchRoomScreen.KEY_CHILDREN,"");
-        final String fn = sharedpreferences.getString(MainActivity.KEY_FIRSTNAME,"");
-        final String ln = sharedpreferences.getString(MainActivity.KEY_LASTNAME,"");
-        final String un = sharedpreferences.getString(MainActivity.KEY_USERNAME,"");
+        final String fn = sharedpreferences.getString(Login.KEY_FIRSTNAME,"");
+        final String ln = sharedpreferences.getString(Login.KEY_LASTNAME,"");
+        final String un = sharedpreferences.getString(Login.KEY_USERNAME,"");
 
 
        save = findViewById(R.id.reserveSave);
@@ -131,7 +131,7 @@ public class reserveRoomScreen extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(reserveRoomScreen.this,MainActivity.class));
+                startActivity(new Intent(reserveRoomScreen.this, Login.class));
             }
         });
     }

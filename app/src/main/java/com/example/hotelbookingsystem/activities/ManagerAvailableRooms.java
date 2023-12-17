@@ -26,7 +26,7 @@ import android.widget.TimePicker;
 
 import com.example.hotelbookingsystem.R;
 
-public class Available_rooms extends AppCompatActivity {
+public class ManagerAvailableRooms extends AppCompatActivity {
     DatePickerDialog picker;
     EditText eText,sText;
     DBManager db;
@@ -46,28 +46,28 @@ public class Available_rooms extends AppCompatActivity {
         ibHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Available_rooms.this, managerHomescreen.class));
+                startActivity(new Intent(ManagerAvailableRooms.this, ManagerHomescreen.class));
             }
         });
 
         ibReser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Available_rooms.this, reservation_summary_manager_Activity.class));
+                startActivity(new Intent(ManagerAvailableRooms.this, ManagerReservationSummary.class));
             }
         });
 
         ibProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Available_rooms.this, managerProfile.class));
+                startActivity(new Intent(ManagerAvailableRooms.this, ManagerProfile.class));
             }
         });
 
         ibSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Available_rooms.this, Searchroom.class));
+                startActivity(new Intent(ManagerAvailableRooms.this, Searchroom.class));
             }
         });
 
@@ -100,7 +100,7 @@ public class Available_rooms extends AppCompatActivity {
                 int month = cldr.get(Calendar.MONTH);
                 int year = cldr.get(Calendar.YEAR);
                 // date picker dialog
-                picker = new DatePickerDialog(Available_rooms.this,
+                picker = new DatePickerDialog(ManagerAvailableRooms.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -120,7 +120,7 @@ public class Available_rooms extends AppCompatActivity {
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(Available_rooms.this, new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(ManagerAvailableRooms.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         sText.setText(selectedHour + ":" + selectedMinute);
@@ -182,7 +182,7 @@ public class Available_rooms extends AppCompatActivity {
                         public void onClick(View view) {
 
                             Intent intent = new
-                                    Intent(Available_rooms.this, ModifyRoom.class);
+                                    Intent(ManagerAvailableRooms.this, ModifyRoom.class);
                             intent.putExtra("roomNumber",rnString);
                             intent.putExtra("roomPrice",map.get("room_price"));
                             intent.putExtra("roomType",map.get("room_type"));

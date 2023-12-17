@@ -18,10 +18,6 @@ import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Reservation;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class viewProfile extends AppCompatActivity {
 //    ScrollView sc = (ScrollView) findViewById(R.id.profile_scroll);
 
@@ -70,7 +66,7 @@ public class viewProfile extends AppCompatActivity {
 
         // Getting the editable fields and buttons with ID's
 
-        pro_name = findViewById(R.id.admin_profile_name);
+        pro_name = findViewById(R.id.pro_name);
         pro_user = findViewById(R.id.admin_userGM);
         pro_pwd = findViewById(R.id.admin_pwdGM);
         pro_first = findViewById(R.id.admin_firstGM);

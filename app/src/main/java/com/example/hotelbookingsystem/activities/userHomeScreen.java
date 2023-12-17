@@ -21,7 +21,7 @@ public class userHomeScreen extends AppCompatActivity {
     EditText heading;
     SharedPreferences sharedpreferences;
 
-    ImageButton view_profile, logout, view_reservations, view_pending;
+    ImageButton view_profile, logout, view_reservations, view_pending,view_history;
 
     public static final String SHARED_PREF_NAME = "mypref";
 
@@ -35,6 +35,7 @@ public class userHomeScreen extends AppCompatActivity {
         search_room = findViewById(R.id.user_searchroom);
         view_profile = findViewById(R.id.imgbtnProfile);
         view_pending = findViewById(R.id.imageList);
+        view_history = findViewById(R.id.imageHistory);
         view_reservations = findViewById(R.id.imageHistory);
         logout = findViewById(R.id.imgbtnHome);
 
@@ -54,19 +55,24 @@ public class userHomeScreen extends AppCompatActivity {
                 startActivity(new Intent(userHomeScreen.this,viewProfile.class));
             }
         });
-
-        view_reservations.setOnClickListener(new View.OnClickListener() {
+        view_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(userHomeScreen.this,reservation_summary_guest_Activity.class));
+                startActivity(new Intent(userHomeScreen.this, UserHistoryBooking.class));
             }
         });
+
+//        view_reservations.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(userHomeScreen.this,reservation_summary_guest_Activity.class));
+//            }
+//        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(userHomeScreen.this,userHomeScreen.class));
-
             }
         });
 

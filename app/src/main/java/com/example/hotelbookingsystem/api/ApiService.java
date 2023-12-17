@@ -1,5 +1,6 @@
 package com.example.hotelbookingsystem.api;
 
+import com.example.hotelbookingsystem.model.Booking;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Registration;
 import com.example.hotelbookingsystem.model.RegistrationResponse;
@@ -7,6 +8,7 @@ import com.example.hotelbookingsystem.model.UserResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,7 +26,7 @@ public interface ApiService {
 //    String url = "http://172.27.0.1:8080/"; // ip lê dương
 //    String url = "http://10.20.5.242:8080/";// ip hhd
 
-    String url = "http://172.27.0.1:8080/";
+    String url = "http://192.168.16.191:8080/";
 
 
     Gson gson = new GsonBuilder()
@@ -53,6 +55,9 @@ public interface ApiService {
 
     @DELETE("admin/delete")
     Call<Void> deleteUser(@Query("id") Long id);
+
+    @GET("booking/getHistory")
+    Call<List<Booking>> getHistoryBooking(@Query("userId") Long userId, @Query("startDate") Date startDate, @Query("endDate") Date endDate);
 
 
 }

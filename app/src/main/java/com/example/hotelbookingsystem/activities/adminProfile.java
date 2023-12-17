@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,10 +16,6 @@ import com.example.hotelbookingsystem.R;
 import com.example.hotelbookingsystem.api.ApiService;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.UserResponse;
-
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +43,7 @@ public class adminProfile extends AppCompatActivity {
         final String role = sharedpreferences.getString(MainActivity.KEY_ROLE, "");
         setContentView(R.layout.activity_admin_profile);
 
-        pro_name = findViewById(R.id.admin_profile_name);
+        pro_name = findViewById(R.id.pro_name);
         pro_user = findViewById(R.id.admin_userGM);
         pro_pwd = findViewById(R.id.admin_pwdGM);
         pro_first = findViewById(R.id.admin_firstGM);
@@ -59,7 +54,7 @@ public class adminProfile extends AppCompatActivity {
         pro_zip = findViewById(R.id.admin_zipGM);
         pro_email = findViewById(R.id.admin_emailGM);
         pro_phone = findViewById(R.id.admin_phoneGM);
-        tvName = findViewById(R.id.admin_profile_name);
+        tvName = findViewById(R.id.pro_name);
         logout = findViewById(R.id.adminLogout);
         ibProfile = findViewById(R.id.adProfile_profile);
         ibHome = findViewById(R.id.adProfile_home);

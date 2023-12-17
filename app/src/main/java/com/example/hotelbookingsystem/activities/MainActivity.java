@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String KEY_FIRSTNAME = "firstName";
     public static final String KEY_LASTNAME = "lastName";
 
+    public static final String KEY_USERID = "userId";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     String role = profile.getRole();
                     String firstName = profile.getFirstName();
                     String lastName = profile.getLastName();
+                    Long userId=profile.getId();
 
                     sharedpreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
@@ -92,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
                     session.putString(KEY_ROLE, role);
                     session.putString(KEY_FIRSTNAME, firstName);
                     session.putString(KEY_LASTNAME, lastName);
+                    session.putLong(KEY_USERID, userId);
+
                     session.apply();
 
                     System.out.println("Thong tin dang nhap dc xac thuc, firstName:" + firstName + ", lastName: " + lastName + ", role: " + role);

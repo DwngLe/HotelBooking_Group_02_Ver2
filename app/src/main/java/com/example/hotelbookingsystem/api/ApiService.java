@@ -4,6 +4,7 @@ import com.example.hotelbookingsystem.model.Booking;
 import com.example.hotelbookingsystem.model.Profile;
 import com.example.hotelbookingsystem.model.Registration;
 import com.example.hotelbookingsystem.model.RegistrationResponse;
+import com.example.hotelbookingsystem.model.Room;
 import com.example.hotelbookingsystem.model.UserResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,5 +60,6 @@ public interface ApiService {
     @GET("booking/getHistory")
     Call<List<Booking>> getHistoryBooking(@Query("userId") Long userId, @Query("startDate") Date startDate, @Query("endDate") Date endDate);
 
-
+    @GET("room")
+    Call<List<Room>> getRooms(@Query("startDate") Date startDate,@Query("endDate") Date endDate, @Query("status") String status);
 }

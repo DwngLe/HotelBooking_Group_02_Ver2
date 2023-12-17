@@ -19,6 +19,27 @@ public class  Booking {
     private Long roomId;
     private Long userId;
 
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", num_of_rooms=" + num_of_rooms +
+                ", num_of_adults=" + num_of_adults +
+                ", num_of_children=" + num_of_children +
+                ", check_in_date=" + check_in_date +
+                ", check_out_date=" + check_out_date +
+                ", num_of_days=" + num_of_days +
+                ", total_price=" + total_price +
+                ", tax=" + tax +
+                ", billed_price=" + billed_price +
+                ", is_paid=" + is_paid +
+                ", is_active=" + is_active +
+                ", roomId=" + roomId +
+                ", userId=" + userId +
+                '}';
+    }
+
     public Booking() {
     }
 

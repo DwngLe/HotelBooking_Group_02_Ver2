@@ -19,6 +19,127 @@ public class Room {
     private String roomNumber;
     private String roomStatus;
 
+    private Long id;
+
+    private String room_number;
+    private int room_floor;
+    private String room_type;
+    private int room_price;
+    private String room_desciption;
+    private int number_of_beds;
+    private String room_status;
+
+    private Long createdById;
+    private String createdByName;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRoom_number() {
+        return room_number;
+    }
+
+    public void setRoom_number(String room_number) {
+        this.room_number = room_number;
+    }
+
+    public int getRoom_floor() {
+        return room_floor;
+    }
+
+    public void setRoom_floor(int room_floor) {
+        this.room_floor = room_floor;
+    }
+
+    public String getRoom_type() {
+        return room_type;
+    }
+
+    public void setRoom_type(String room_type) {
+        this.room_type = room_type;
+    }
+
+    public int getRoom_price() {
+        return room_price;
+    }
+
+    public void setRoom_price(int room_price) {
+        this.room_price = room_price;
+    }
+
+    public String getRoom_desciption() {
+        return room_desciption;
+    }
+
+    public void setRoom_desciption(String room_desciption) {
+        this.room_desciption = room_desciption;
+    }
+
+    public int getNumber_of_beds() {
+        return number_of_beds;
+    }
+
+    public void setNumber_of_beds(int number_of_beds) {
+        this.number_of_beds = number_of_beds;
+    }
+
+    public String getRoom_status() {
+        return room_status;
+    }
+
+    public void setRoom_status(String room_status) {
+        this.room_status = room_status;
+    }
+
+    public Long getCreatedById() {
+        return createdById;
+    }
+
+    public void setCreatedById(Long createdById) {
+        this.createdById = createdById;
+    }
+
+    public String getCreatedByName() {
+        return createdByName;
+    }
+
+    public void setCreatedByName(String createdByName) {
+        this.createdByName = createdByName;
+    }
+
+    public Room(String hotelName, String hotelLocation, String roomType, String numberOfBeds, String roomFacilities, String checkInDate, String checkOutDate, String numberOfNights, String pricePerNight, String numberOfRooms, String numberOfAdults, String numberOfChildren, String bookingId, String totalPrice, String roomNumber, String roomStatus, Long id, String room_number, int room_floor, String room_type, int room_price, String room_desciption, int number_of_beds, String room_status, Long createdById, String createdByName) {
+        this.hotelName = hotelName;
+        this.hotelLocation = hotelLocation;
+        this.roomType = roomType;
+        this.numberOfBeds = numberOfBeds;
+        this.roomFacilities = roomFacilities;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.numberOfNights = numberOfNights;
+        this.pricePerNight = pricePerNight;
+        this.numberOfRooms = numberOfRooms;
+        this.numberOfAdults = numberOfAdults;
+        this.numberOfChildren = numberOfChildren;
+        this.bookingId = bookingId;
+        this.totalPrice = totalPrice;
+        this.roomNumber = roomNumber;
+        this.roomStatus = roomStatus;
+        this.id = id;
+        this.room_number = room_number;
+        this.room_floor = room_floor;
+        this.room_type = room_type;
+        this.room_price = room_price;
+        this.room_desciption = room_desciption;
+        this.number_of_beds = number_of_beds;
+        this.room_status = room_status;
+        this.createdById = createdById;
+        this.createdByName = createdByName;
+    }
 
     public Room(String checkInDate, String checkOutDate, String roomNumber, String roomStatus) {
         this.checkInDate = checkInDate;

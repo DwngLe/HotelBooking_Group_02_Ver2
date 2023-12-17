@@ -48,7 +48,7 @@ public class adminProfile extends AppCompatActivity {
         final String role = sharedpreferences.getString(MainActivity.KEY_ROLE, "");
         setContentView(R.layout.activity_admin_profile);
 
-        pro_name = findViewById(R.id.admin_profile_name);
+//        pro_name = findViewById(R.id.admin_profile_name);
         pro_user = findViewById(R.id.admin_userGM);
         pro_pwd = findViewById(R.id.admin_pwdGM);
         pro_first = findViewById(R.id.admin_firstGM);

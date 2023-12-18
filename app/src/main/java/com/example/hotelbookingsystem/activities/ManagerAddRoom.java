@@ -62,6 +62,7 @@ public class ManagerAddRoom extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         final String user = sharedpreferences.getString(Login.KEY_USERNAME,"");
+        System.out.println(user);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

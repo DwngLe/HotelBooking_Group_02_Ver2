@@ -94,7 +94,7 @@ public class Login extends AppCompatActivity {
                     session.putString(KEY_LASTNAME, lastName);
                     session.apply();
 
-                    System.out.println("Thong tin dang nhap dc xac thuc, firstName:" + firstName + ", lastName: " + lastName + ", role: " + role);
+                    System.out.println("Thong tin dang nhap dc xac thuc, firstName:" + firstName + ", lastName: " + lastName + ", role: " + role + ", userame: " + user.getText().toString());
 
                     if (role.equals("MANAGER")) {
                         startActivity(new Intent(Login.this, ManagerHomescreen.class));

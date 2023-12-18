@@ -35,9 +35,9 @@ public class viewProfile extends AppCompatActivity {
 //    ScrollView sc = (ScrollView) findViewById(R.id.profile_scroll);
 
     Button logout;
-    EditText pro_user,pro_pwd,pro_first,pro_last,pro_staddr,pro_city,pro_state,pro_zip,pro_email,pro_phone,pro_cname,pro_cnum,pro_cexp,pro_role;
+    EditText pro_pwd,pro_first,pro_last,pro_staddr,pro_city,pro_state,pro_zip,pro_email,pro_phone,pro_cname,pro_cnum,pro_cexp,pro_role;
     Spinner pro_ctype;
-    TextView pro_name, tvName;
+    TextView pro_name, tvName, pro_user;
     SharedPreferences sharedpreferences;
     ImageButton view_profile, view_home, view_reservations, view_pending;
 
@@ -56,7 +56,7 @@ public class viewProfile extends AppCompatActivity {
 
 
 
-        pro_user = findViewById(R.id.user_userGM);
+        pro_user = findViewById(R.id.user_profile_name);
         pro_pwd = findViewById(R.id.user_pwdGM);
         pro_first = findViewById(R.id.user_firstGM);
         pro_last = findViewById(R.id.user_lastGM);

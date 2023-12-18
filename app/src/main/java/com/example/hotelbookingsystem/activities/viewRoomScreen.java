@@ -109,7 +109,7 @@ public class viewRoomScreen extends AppCompatActivity {
         hotelName.setText(room.get(0).getHotelName());
         hotelLocation.setText(room.get(0).getHotelLocation().toString());
         roomType.setText(room.get(0).getRoomType());
-        nBeds.setText(room.get(0).getNumberOfBeds());
+        nBeds.setText(room.get(0).getNumberOfBeds() + "");
         rFacilities.setText(room.get(0).getRoomFacilities());
         price.setText(room.get(0).getPricePerNight());
         cid.setText(check);

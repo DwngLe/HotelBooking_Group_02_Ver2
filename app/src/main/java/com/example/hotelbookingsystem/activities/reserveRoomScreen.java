@@ -50,8 +50,6 @@ public class reserveRoomScreen extends AppCompatActivity {
         hotelName = findViewById(R.id.viewHotelName);
         hotelLocation = findViewById(R.id.viewHotelLocation);
         roomType = findViewById(R.id.viewRoomType);
-        nBeds = findViewById(R.id.viewBeds);
-        rFacilities = findViewById(R.id.viewRoomFacilities);
         cid = findViewById(R.id.viewCheckInDate);
         cod = findViewById(R.id.viewCheckOutDate);
         nNights = findViewById(R.id.viewNights);

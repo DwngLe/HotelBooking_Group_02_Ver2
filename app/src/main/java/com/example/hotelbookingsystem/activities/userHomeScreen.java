@@ -17,11 +17,11 @@ import com.example.hotelbookingsystem.R;
 
 
 public class userHomeScreen extends AppCompatActivity {
-    FrameLayout search_room;
+//    FrameLayout search_room;
     EditText heading;
     SharedPreferences sharedpreferences;
 
-    ImageButton view_profile, logout, view_reservations, view_pending,view_history;
+    ImageButton search_room, view_profile, logout, view_reservations, view_pending,view_history;
 
     public static final String SHARED_PREF_NAME = "mypref";
 
@@ -32,7 +32,7 @@ public class userHomeScreen extends AppCompatActivity {
         setContentView(R.layout.userhomepage);
         getSupportActionBar().setTitle("Home");
 
-        search_room = findViewById(R.id.user_searchroom);
+        search_room = findViewById(R.id.imageButton);
         view_profile = findViewById(R.id.imgbtnProfile);
         view_pending = findViewById(R.id.imageList);
         view_history = findViewById(R.id.imageHistory);

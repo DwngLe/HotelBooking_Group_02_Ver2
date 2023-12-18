@@ -27,10 +27,11 @@ import java.util.Locale;
 public class searchRoomScreen extends AppCompatActivity {
 
 
-    Button home,logout,search;
+    Button home,search;
     Button homer,logoutr;
     EditText nadults,nchild,cidate,codate;
     Spinner Hloc, Hroom, HNroom;
+    ImageButton view_profile, logout, view_reservations, view_pending;
 
     ListView room_listView;
     searchRoomAdapter searchRoomAdapter;
@@ -53,8 +54,12 @@ public class searchRoomScreen extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Search Room");
 
+
+        view_profile = findViewById(R.id.imgbtnProfile);
+        view_pending = findViewById(R.id.imageList);
+        view_reservations = findViewById(R.id.imageHistory);
+        logout = findViewById(R.id.imgbtnHome);
         home = findViewById(R.id.userHome);
-        logout = findViewById(R.id.logout);
         search = findViewById(R.id.search_r);
 
         Hloc = (Spinner) findViewById(R.id.Hloc);
@@ -189,13 +194,33 @@ public class searchRoomScreen extends AppCompatActivity {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        view_pending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(searchRoomScreen.this,MainActivity.class));
+                startActivity(new Intent(searchRoomScreen.this,pendingRoomScreen.class));
+            }
+        });
+        view_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(searchRoomScreen.this,viewProfile.class));
             }
         });
 
+        view_reservations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(searchRoomScreen.this,reservation_summary_guest_Activity.class));
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(searchRoomScreen.this,userHomeScreen.class));
+
+            }
+        });
 
     }
 
